@@ -1,8 +1,10 @@
 package com.paide;
 
+import com.paide.gui.Window;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        new Window();
     }
 }
