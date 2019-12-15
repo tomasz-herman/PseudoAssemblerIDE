@@ -1,5 +1,7 @@
 package com.paide.gui;
 
+import com.paide.gui.terminal.Terminal;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,17 +11,14 @@ public class Layout {
     private JPanel mainPane;
     private JScrollPane editorPane;
     private JScrollPane terminalPane;
+    private Terminal terminal;
 
     public Layout(){
         JTextArea editor = new JTextArea();
         editor.setFont(DEFAULT_FONT);
         editor.setText("This is editor");
-        JTextArea terminal = new JTextArea();
-        terminal.setFont(DEFAULT_FONT);
-        terminal.setText("And this is terminal");
-
+        terminal = new Terminal(terminalPane);
         editorPane.setViewportView(editor);
-        terminalPane.setViewportView(terminal);
     }
 
     public JPanel getMainPane(){

@@ -1,5 +1,7 @@
 package com.paide.gui.terminal;
 
+import com.paide.gui.Layout;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.InputStream;
@@ -14,7 +16,6 @@ public class Terminal {
     private TerminalOutputStream outputStream;
 
     public Terminal(JScrollPane scrollPane){
-        var font = new Font("Noto Sans Mono", Font.PLAIN,18);
         verticalScrollBarMaximumValue = scrollPane.getVerticalScrollBar().getMaximum();
         scrollPane.getVerticalScrollBar().addAdjustmentListener(e -> {
             if ((verticalScrollBarMaximumValue - e.getAdjustable().getMaximum()) == 0) return;
@@ -22,7 +23,7 @@ public class Terminal {
             verticalScrollBarMaximumValue = scrollPane.getVerticalScrollBar().getMaximum();
         });
         textArea = new JTextArea();
-        textArea.setFont(font);
+        textArea.setFont(Layout.DEFAULT_FONT);
         textArea.setCaretColor(Color.white);
         textArea.getCaret().setBlinkRate(450);
         disableArrowKeys(textArea.getInputMap());
