@@ -10,6 +10,7 @@ public class Window extends JFrame {
         setMinimumSize(new Dimension(640, 480));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Pseudo-Assembler IDE");
+        setContentPane(new Layout().getMainPane());
         pack();
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
