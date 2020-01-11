@@ -1,6 +1,7 @@
 package com.paide.gui.terminal;
 
-import com.paide.gui.Layout;
+import com.paide.gui.layout.MainLayout;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,56 +9,54 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
-public class Terminal {
+public class Terminal extends JTextArea {
 
     private int verticalScrollBarMaximumValue;
-    private JTextArea textArea;
     private TerminalInputStream inputStream;
     private TerminalOutputStream outputStream;
 
-    public Terminal(JScrollPane scrollPane){
+    public Terminal(@NotNull JScrollPane scrollPane){
+        this();
         verticalScrollBarMaximumValue = scrollPane.getVerticalScrollBar().getMaximum();
         scrollPane.getVerticalScrollBar().addAdjustmentListener(e -> {
             if ((verticalScrollBarMaximumValue - e.getAdjustable().getMaximum()) == 0) return;
             e.getAdjustable().setValue(e.getAdjustable().getMaximum());
             verticalScrollBarMaximumValue = scrollPane.getVerticalScrollBar().getMaximum();
         });
-        textArea = new JTextArea();
-        textArea.setFont(Layout.DEFAULT_FONT);
-        textArea.setCaretColor(Color.white);
-        textArea.getCaret().setBlinkRate(450);
-        disableArrowKeys(textArea.getInputMap());
-        textArea.setEditable(false);
-        textArea.setLineWrap(true);
-        scrollPane.setViewportView(textArea);
-        inputStream = (TerminalInputStream)createInputStream(textArea);
-        outputStream = (TerminalOutputStream)createOutputStream(textArea);
+        scrollPane.setViewportView(this);
     }
 
     public Terminal(){
-        textArea = new JTextArea();
-        disableArrowKeys(textArea.getInputMap());
-        textArea.setEditable(false);
-        inputStream = (TerminalInputStream)createInputStream(textArea);
-        outputStream = (TerminalOutputStream)createOutputStream(textArea);
+        setFont(MainLayout.DEFAULT_FONT);
+        setCaretColor(Color.white);
+        getCaret().setBlinkRate(450);
+        disableArrowKeys();
+        setEditable(false);
+        setLineWrap(true);
+        inputStream = (TerminalInputStream)createInputStream();
+        outputStream = (TerminalOutputStream)createOutputStream();
+        registerKeyboardAction(getActionForKeyStroke(KeyStroke.getKeyStroke("ctrl C")), KeyStroke.getKeyStroke("ctrl shift C"), WHEN_FOCUSED);
+        getInputMap().remove(KeyStroke.getKeyStroke("ctrl C"));
     }
 
-    private void disableArrowKeys(InputMap inputMap) {
+    private void disableArrowKeys() {
         String[] keys = {"UP", "DOWN", "LEFT", "RIGHT", "HOME", "ENTER"};
         for (String key : keys) {
-            inputMap.put(KeyStroke.getKeyStroke(key), "none");
+            getInputMap().put(KeyStroke.getKeyStroke(key), "none");
         }
     }
 
-    private InputStream createInputStream(JTextArea terminal){
+    @NotNull
+    private InputStream createInputStream(){
         TerminalInputStream inputStream = new TerminalInputStream();
-        terminal.addKeyListener(inputStream);
+        addKeyListener(inputStream);
         System.setIn(inputStream);
         return inputStream;
     }
 
-    private OutputStream createOutputStream(JTextArea terminal){
-        TerminalOutputStream outputStream = new TerminalOutputStream(terminal);
+    @NotNull
+    private OutputStream createOutputStream(){
+        TerminalOutputStream outputStream = new TerminalOutputStream(this);
         PrintStream printStream = new PrintStream(outputStream);
         System.setOut(printStream);
         System.setErr(printStream);
@@ -65,7 +64,7 @@ public class Terminal {
     }
 
     public void clear() {
-        textArea.setText("");
+        setText("");
         outputStream.reset();
         inputStream.reset();
     }
@@ -74,27 +73,19 @@ public class Terminal {
         outputStream.flush();
     }
 
-    void setFont(Font font){
-        textArea.setFont(font);
+    public void setTextColor(Color color){
+        setForeground(color);
     }
 
-    void setTextColor(Color color){
-        textArea.setForeground(color);
+    public void setBackgroundColor(Color color){
+        setBackground(color);
     }
 
-    void setBackgroundColor(Color color){
-        textArea.setBackground(color);
+    public Color getTextColor(){
+        return getForeground();
     }
 
-    Color getTextColor(){
-        return textArea.getForeground();
-    }
-
-    Color getBackgroundColor(){
-        return textArea.getBackground();
-    }
-
-    JTextArea getTextArea(){
-        return textArea;
+    public Color getBackgroundColor(){
+        return getBackground();
     }
 }

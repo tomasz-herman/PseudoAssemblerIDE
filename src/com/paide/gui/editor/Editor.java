@@ -1,6 +1,6 @@
 package com.paide.gui.editor;
 
-import com.paide.gui.Layout;
+import com.paide.gui.layout.MainLayout;
 import com.paide.gui.emulator.Assembler;
 import org.fife.ui.rsyntaxtextarea.AbstractTokenMakerFactory;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
@@ -66,7 +66,7 @@ public class Editor extends RSyntaxTextArea {
         panel.setViewportView(this);
         panel.setLineNumbersEnabled(true);
         panel.setIconRowHeaderEnabled(true);
-        panel.getGutter().setLineNumberFont(Layout.DEFAULT_FONT);
+        panel.getGutter().setLineNumberFont(MainLayout.DEFAULT_FONT);
     }
 
     private void setupHighlighting(){
@@ -98,8 +98,8 @@ public class Editor extends RSyntaxTextArea {
         setTabsEmulated(true);
         setTabSize(4);
         setFadeCurrentLineHighlight(true);
-        setFont(Layout.DEFAULT_FONT);
-        setGutterFont(Layout.DEFAULT_FONT);
+        setFont(MainLayout.DEFAULT_FONT);
+        setGutterFont(MainLayout.DEFAULT_FONT);
         setCurrentLineHighlightColor(new JScrollPane().getBackground());
         setBackground(new JTextArea().getBackground());
         setTextColor(new JTextArea().getForeground());

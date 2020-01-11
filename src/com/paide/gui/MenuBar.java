@@ -1,6 +1,6 @@
 package com.paide.gui;
 
-import com.paide.gui.Layout;
+import com.paide.gui.layout.MainLayout;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -32,7 +32,7 @@ public class MenuBar extends JMenuBar {
     @org.jetbrains.annotations.NotNull
     private JMenu createMenu(String name, @NotNull List<String> menuItems, Map<String, JMenuItem> mappedMenuItems) {
         JMenu menu = new JMenu(name);
-        menu.setFont(Layout.DEFAULT_FONT);
+        menu.setFont(MainLayout.DEFAULT_FONT);
         for (String item : menuItems) {
             if(item.isEmpty())menu.addSeparator();
             else {
@@ -47,7 +47,7 @@ public class MenuBar extends JMenuBar {
     @NotNull
     private JMenuItem createMenuItem(String name) {
         JMenuItem menuItem = new JMenuItem(name);
-        menuItem.setFont(Layout.DEFAULT_FONT);
+        menuItem.setFont(MainLayout.DEFAULT_FONT);
         return menuItem;
     }
 

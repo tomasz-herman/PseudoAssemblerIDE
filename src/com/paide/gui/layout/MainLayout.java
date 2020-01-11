@@ -1,6 +1,8 @@
-package com.paide.gui;
+package com.paide.gui.layout;
 
 import com.hermant.program.Program;
+import com.paide.gui.MenuBar;
+import com.paide.gui.WindowBuilder;
 import com.paide.gui.editor.Editor;
 import com.paide.gui.emulator.Assembler;
 import com.paide.gui.emulator.Emulator;
@@ -11,31 +13,40 @@ import sun.misc.Signal;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.function.Consumer;
 
-public class Layout {
-    public static final Font DEFAULT_FONT = new Font("Monospaced", Font.PLAIN,18);
+public class MainLayout {
+    public static final Font DEFAULT_FONT = new Font(Font.MONOSPACED, Font.PLAIN,18);
+
 
     private JPanel mainPane;
-    private RTextScrollPane editorPane;
     private JScrollPane terminalPane;
-    private Editor editor;
-    private Terminal terminal;
+    private RTextScrollPane editorPane;
     private com.paide.gui.MenuBar menuBar;
+    private Terminal terminal;
+    private Editor editor;
     private Emulator emulator;
 
     private volatile boolean running = false;
 
-    public Layout(){
-        editor = new Editor(editorPane);
+    public MainLayout(){
         terminal = new Terminal(terminalPane);
-        menuBar = new MenuBar();
-        editorPane.setViewportView(editor);
+        editor = new Editor(editorPane);
+        menuBar = new com.paide.gui.MenuBar();
         emulator = new Emulator();
         UIManager.put("ToolTip.font", DEFAULT_FONT);
         setupMenuItems();
+    }
+
+    public JPanel getMainPane(){
+        return mainPane;
+    }
+
+    public MenuBar getMenuBar() {
+        return menuBar;
     }
 
     public void addCloseHandler(){
@@ -62,6 +73,30 @@ public class Layout {
         menuBar.getMenuItem("Close").setAccelerator(KeyStroke.getKeyStroke("F4"));
         menuBar.getMenuItem("Exit").setAccelerator(KeyStroke.getKeyStroke("alt F4"));
 
+        menuBar.getMenuItem("Undo").setAction(RTextArea.getAction(RTextArea.UNDO_ACTION));
+        menuBar.getMenuItem("Redo").setAction(RTextArea.getAction(RTextArea.REDO_ACTION));
+        menuBar.getMenuItem("Cut").setAction(RTextArea.getAction(RTextArea.CUT_ACTION));
+        menuBar.getMenuItem("Copy").setAction(RTextArea.getAction(RTextArea.COPY_ACTION));
+        menuBar.getMenuItem("Paste").setAction(RTextArea.getAction(RTextArea.PASTE_ACTION));
+        menuBar.getMenuItem("Delete").setAction(RTextArea.getAction(RTextArea.DELETE_ACTION));
+        menuBar.getMenuItem("Select all").setAction(RTextArea.getAction(RTextArea.SELECT_ALL_ACTION));
+
+        menuBar.getMenuItem("Undo").setAccelerator(KeyStroke.getKeyStroke("ctrl Z"));
+        menuBar.getMenuItem("Redo").setAccelerator(KeyStroke.getKeyStroke("ctrl Y"));
+        menuBar.getMenuItem("Cut").setAccelerator(KeyStroke.getKeyStroke("ctrl X"));
+        menuBar.getMenuItem("Copy").setAccelerator(KeyStroke.getKeyStroke("ctrl C"));
+        menuBar.getMenuItem("Paste").setAccelerator(KeyStroke.getKeyStroke("ctrl V"));
+        menuBar.getMenuItem("Delete").setAccelerator(KeyStroke.getKeyStroke("DELETE"));
+        menuBar.getMenuItem("Select all").setAccelerator(KeyStroke.getKeyStroke("ctrl A"));
+
+        menuBar.getMenuItem("Undo").setToolTipText(null);
+        menuBar.getMenuItem("Redo").setToolTipText(null);
+        menuBar.getMenuItem("Cut").setToolTipText(null);
+        menuBar.getMenuItem("Copy").setToolTipText(null);
+        menuBar.getMenuItem("Paste").setToolTipText(null);
+        menuBar.getMenuItem("Delete").setToolTipText(null);
+        menuBar.getMenuItem("Select all").setToolTipText(null);
+
         menuBar.getMenuItem("Run").addActionListener(e -> execute(emulator::run));
         menuBar.getMenuItem("Debug").addActionListener(e -> execute(emulator::debug));
         menuBar.getMenuItem("Assemble and load").addActionListener(e -> execute(emulator::load));
@@ -71,14 +106,21 @@ public class Layout {
         menuBar.getMenuItem("Debug").setAccelerator(KeyStroke.getKeyStroke("ctrl shift F5"));
         menuBar.getMenuItem("Assemble and load").setAccelerator(KeyStroke.getKeyStroke("shift F5"));
         menuBar.getMenuItem("Assemble").setAccelerator(KeyStroke.getKeyStroke("F5"));
+
+        menuBar.getMenuItem("Settings").addActionListener(e -> getSettingsDialog());
+        menuBar.getMenuItem("Settings").setAccelerator(KeyStroke.getKeyStroke("ctrl alt S"));
     }
 
-    public JPanel getMainPane(){
-        return mainPane;
-    }
-
-    public MenuBar getMenuBar() {
-        return menuBar;
+    private void getSettingsDialog() {
+        new WindowBuilder()
+                .setContentPane(new SettingsLayout(editor, terminal).getMainPanel())
+                .setTitle("Settings")
+                .setMinimumSize(480, 640)
+                .setPreferredSize(540, 720)
+                .setResizable(true)
+                .setDocumentModal()
+                .setOwner((JFrame) SwingUtilities.getWindowAncestor(mainPane))
+                .buildDialog();
     }
 
     private void execute(Consumer<Program> executor) {
@@ -106,5 +148,4 @@ public class Layout {
             }
         } else thread.start();
     }
-
 }
