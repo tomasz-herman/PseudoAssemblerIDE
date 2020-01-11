@@ -1,6 +1,7 @@
 package com.paide.gui.editor;
 
 import com.paide.gui.Layout;
+import com.paide.gui.emulator.Assembler;
 import org.fife.ui.rsyntaxtextarea.AbstractTokenMakerFactory;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.TokenMakerFactory;
@@ -9,6 +10,7 @@ import org.fife.ui.rtextarea.RTextScrollPane;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +24,8 @@ public class Editor extends RSyntaxTextArea {
     private boolean changed = false;
     private RTextScrollPane panel;
 
+    private static final ImageIcon ERROR_ICON = new ImageIcon("./res/error16x16.png");
+
     public Editor(RTextScrollPane panel) {
         this.panel = panel;
         setupFileChoosers();
@@ -30,6 +34,7 @@ public class Editor extends RSyntaxTextArea {
         setupDefaultTheme();
         setupChangeListener();
         registerKeyboardAction(getActionForKeyStroke(KeyStroke.getKeyStroke("ctrl Y")), KeyStroke.getKeyStroke("ctrl shift Z"), WHEN_FOCUSED);
+        addParser(new Assembler());
         discardAllEdits();
     }
 
@@ -112,6 +117,7 @@ public class Editor extends RSyntaxTextArea {
 
     public void openNew(){
         if(showSaveChangesDialog())return;
+        clearErrors();
         setEnabled(true);
         setEditable(true);
         setText("");
@@ -125,6 +131,7 @@ public class Editor extends RSyntaxTextArea {
         int returnVal = inputChooser.showOpenDialog(null);
         if(returnVal == JFileChooser.APPROVE_OPTION){
             file = inputChooser.getSelectedFile();
+            clearErrors();
             try {
                 setText(Files.readString(file.toPath()));
             } catch (IOException e) {
@@ -161,6 +168,7 @@ public class Editor extends RSyntaxTextArea {
 
     public void close(){
         if(showSaveChangesDialog())return;
+        clearErrors();
         setEnabled(false);
         setEditable(false);
         setText("");
@@ -180,6 +188,16 @@ public class Editor extends RSyntaxTextArea {
         if(result == JOptionPane.CANCEL_OPTION)return true;
         if(result == JOptionPane.YES_OPTION) return !save();
         return false;
+    }
+
+    public void markError(int line, String errorMessage){
+        try {
+            panel.getGutter().addOffsetTrackingIcon(getLineStartOffset(line-1), ERROR_ICON, errorMessage);
+        } catch (BadLocationException ignored) { }
+    }
+
+    public void clearErrors(){
+        panel.getGutter().removeAllTrackingIcons();
     }
 
     public File getFile() {
