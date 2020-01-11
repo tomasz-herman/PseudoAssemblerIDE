@@ -64,13 +64,13 @@ public class Terminal {
         return outputStream;
     }
 
-    void clear() {
+    public void clear() {
         textArea.setText("");
         outputStream.reset();
         inputStream.reset();
     }
 
-    void flush() {
+    public void flush() {
         outputStream.flush();
     }
 

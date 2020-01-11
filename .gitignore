@@ -174,3 +174,6 @@ modules.xml
 hs_err_pid*
 
 # End of https://www.gitignore.io/api/java,intellij,intellij+all
+
+#Pseudo-assembler output
+*.out
