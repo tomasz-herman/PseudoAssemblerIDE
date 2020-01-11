@@ -1,7 +1,9 @@
 package com.paide.gui.editor;
 
 import com.paide.gui.Layout;
+import org.fife.ui.rsyntaxtextarea.AbstractTokenMakerFactory;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.TokenMakerFactory;
 import org.fife.ui.rtextarea.RTextScrollPane;
 
 import javax.swing.*;
@@ -24,6 +26,7 @@ public class Editor extends RSyntaxTextArea {
         this.panel = panel;
         setupFileChoosers();
         setupScrollPane();
+        setupHighlighting();
         setupDefaultTheme();
         setupChangeListener();
         registerKeyboardAction(getActionForKeyStroke(KeyStroke.getKeyStroke("ctrl Y")), KeyStroke.getKeyStroke("ctrl shift Z"), WHEN_FOCUSED);
@@ -36,6 +39,12 @@ public class Editor extends RSyntaxTextArea {
         outputChooser = new JFileChooser();
         inputChooser.setCurrentDirectory(workingDirectory);
         outputChooser.setCurrentDirectory(workingDirectory);
+    }
+
+    private void setupHighlighting(){
+        AbstractTokenMakerFactory atmf = (AbstractTokenMakerFactory) TokenMakerFactory.getDefaultInstance();
+        atmf.putMapping("text/pasm", "com.paide.gui.editor.PseudoAssemblerTokenMaker");
+        setSyntaxEditingStyle("text/pasm");
     }
 
     private void setupScrollPane(){
