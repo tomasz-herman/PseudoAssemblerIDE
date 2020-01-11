@@ -1,5 +1,6 @@
 package com.paide;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.paide.gui.Layout;
 import com.paide.gui.WindowBuilder;
 
@@ -8,6 +9,7 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
+        FlatIntelliJLaf.install();
         SwingUtilities.invokeLater(() -> {
             Layout layout = new Layout();
             JFrame window = new WindowBuilder()
