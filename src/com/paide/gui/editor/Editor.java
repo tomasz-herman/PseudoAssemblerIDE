@@ -33,9 +33,23 @@ public class Editor extends RSyntaxTextArea {
         setupHighlighting();
         setupDefaultTheme();
         setupChangeListener();
+        setupHyperlinksSupport();
         registerKeyboardAction(getActionForKeyStroke(KeyStroke.getKeyStroke("ctrl Y")), KeyStroke.getKeyStroke("ctrl shift Z"), WHEN_FOCUSED);
         addParser(new Assembler());
         discardAllEdits();
+    }
+
+    private void setupHyperlinksSupport() {
+        addHyperlinkListener(e -> {
+            Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+            if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+                try {
+                    desktop.browse(e.getURL().toURI());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
     private void setupFileChoosers(){
