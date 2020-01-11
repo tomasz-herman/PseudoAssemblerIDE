@@ -4,6 +4,7 @@ import com.paide.gui.Layout;
 import com.paide.gui.emulator.Assembler;
 import org.fife.ui.rsyntaxtextarea.AbstractTokenMakerFactory;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.Token;
 import org.fife.ui.rsyntaxtextarea.TokenMakerFactory;
 import org.fife.ui.rtextarea.RTextScrollPane;
 
@@ -23,7 +24,6 @@ public class Editor extends RSyntaxTextArea {
     private JFileChooser outputChooser;
     private boolean changed = false;
     private RTextScrollPane panel;
-
     private static final ImageIcon ERROR_ICON = new ImageIcon("./res/error16x16.png");
 
     public Editor(RTextScrollPane panel) {
@@ -60,12 +60,6 @@ public class Editor extends RSyntaxTextArea {
         outputChooser.setCurrentDirectory(workingDirectory);
     }
 
-    private void setupHighlighting(){
-        AbstractTokenMakerFactory atmf = (AbstractTokenMakerFactory) TokenMakerFactory.getDefaultInstance();
-        atmf.putMapping("text/pasm", "com.paide.gui.editor.PseudoAssemblerTokenMaker");
-        setSyntaxEditingStyle("text/pasm");
-    }
-
     private void setupScrollPane(){
         panel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         panel.getGutter().setBackground(new JButton().getBackground());
@@ -73,6 +67,12 @@ public class Editor extends RSyntaxTextArea {
         panel.setLineNumbersEnabled(true);
         panel.setIconRowHeaderEnabled(true);
         panel.getGutter().setLineNumberFont(Layout.DEFAULT_FONT);
+    }
+
+    private void setupHighlighting(){
+        AbstractTokenMakerFactory atmf = (AbstractTokenMakerFactory) TokenMakerFactory.getDefaultInstance();
+        atmf.putMapping("text/pasm", "com.paide.gui.editor.PseudoAssemblerTokenMaker");
+        setSyntaxEditingStyle("text/pasm");
     }
 
     private void setupChangeListener(){
@@ -109,6 +109,22 @@ public class Editor extends RSyntaxTextArea {
         setEnabled(false);
     }
 
+    public void setIconRowHeaderEnabled(boolean enabled){
+        panel.setIconRowHeaderEnabled(enabled);
+    }
+
+    public boolean isIconRowHeaderEnabled(){
+        return panel.isIconRowHeaderEnabled();
+    }
+
+    public void setLineNumbersEnabled(boolean enabled){
+        panel.setLineNumbersEnabled(enabled);
+    }
+
+    public boolean getLineNumbersEnabled(){
+        return panel.getLineNumbersEnabled();
+    }
+
     public void setGutterFont(Font font){
         panel.getGutter().setLineNumberFont(font);
     }
@@ -119,6 +135,10 @@ public class Editor extends RSyntaxTextArea {
         panel.getGutter().setIconRowHeaderInheritsGutterBackground(true);
     }
 
+    public Color getGutterBackgroundColor(){
+        return panel.getGutter().getBackground();
+    }
+
     public void setTextColor(Color color){
         setForeground(color);
         setCaretColor(color);
@@ -127,6 +147,125 @@ public class Editor extends RSyntaxTextArea {
 
     public Color getTextColor(){
         return getForeground();
+    }
+
+    //DC, DS
+    public void setDeclarationColor(Color color){
+        getSyntaxScheme().getStyle(Token.RESERVED_WORD).foreground = color;
+        revalidate();
+    }
+
+    public Color getDeclarationColor(){
+        return getSyntaxScheme().getStyle(Token.RESERVED_WORD).foreground;
+    }
+
+    //ass:
+    public void setLabelColor(Color color){
+        getSyntaxScheme().getStyle(Token.PREPROCESSOR).foreground = color;
+        revalidate();
+    }
+
+    public Color getLabelColor(){
+        return getSyntaxScheme().getStyle(Token.PREPROCESSOR).foreground;
+    }
+
+    //INTEGER, BYTE, STRING
+    public void setDataTypeColor(Color color){
+        getSyntaxScheme().getStyle(Token.DATA_TYPE).foreground = color;
+        revalidate();
+    }
+
+
+    public Color getDataTypeColor(){
+        return getSyntaxScheme().getStyle(Token.DATA_TYPE).foreground;
+    }
+
+    //EXIT, RET
+    public void setTerminalInstructionColor(Color color){
+        getSyntaxScheme().getStyle(Token.RESERVED_WORD_2).foreground = color;
+        revalidate();
+    }
+
+    public Color getTerminalInstructionColor(){
+        return getSyntaxScheme().getStyle(Token.RESERVED_WORD_2).foreground;
+    }
+
+    //ADD, SUB, PUSH
+    public void setInstructionColor(Color color){
+        getSyntaxScheme().getStyle(Token.FUNCTION).foreground = color;
+        revalidate();
+    }
+
+    public Color getInstructionColor(){
+        return getSyntaxScheme().getStyle(Token.FUNCTION).foreground;
+    }
+
+    //,+*
+    public void setOperatorColor(Color color){
+        getSyntaxScheme().getStyle(Token.OPERATOR).foreground = color;
+        revalidate();
+    }
+
+    public Color getOperatorColor(){
+        return getSyntaxScheme().getStyle(Token.OPERATOR).foreground;
+    }
+
+    //3, 0x3, 34.0
+    public void setNumberColor(Color color){
+        getSyntaxScheme().getStyle(Token.LITERAL_NUMBER_DECIMAL_INT).foreground = color;
+        getSyntaxScheme().getStyle(Token.LITERAL_NUMBER_FLOAT).foreground = color;
+        getSyntaxScheme().getStyle(Token.LITERAL_NUMBER_HEXADECIMAL).foreground = color;
+        revalidate();
+    }
+
+    public Color getNumberColor(){
+        return getSyntaxScheme().getStyle(Token.LITERAL_NUMBER_DECIMAL_INT).foreground;
+    }
+
+    public void setCommentColor(Color color){
+        getSyntaxScheme().getStyle(Token.COMMENT_KEYWORD).foreground = color;
+        getSyntaxScheme().getStyle(Token.COMMENT_MULTILINE).foreground = color;
+        getSyntaxScheme().getStyle(Token.COMMENT_EOL).foreground = color;
+        getSyntaxScheme().getStyle(Token.COMMENT_DOCUMENTATION).foreground = color;
+        getSyntaxScheme().getStyle(Token.COMMENT_MARKUP).foreground = color;
+        getSyntaxScheme().getStyle(Token.MARKUP_COMMENT).foreground = color;
+        revalidate();
+    }
+
+    public Color getCommentColor(){
+        return getSyntaxScheme().getStyle(Token.COMMENT_EOL).foreground;
+    }
+
+    //()
+    public void setSeparatorColor(Color color){
+        getSyntaxScheme().getStyle(Token.SEPARATOR).foreground = color;
+        revalidate();
+    }
+
+    public Color getSeparatorColor(){
+        return getSyntaxScheme().getStyle(Token.SEPARATOR).foreground;
+    }
+
+    //''""
+    public void setQuotedColor(Color color){
+        getSyntaxScheme().getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground = color;
+        getSyntaxScheme().getStyle(Token.LITERAL_CHAR).foreground = color;
+        revalidate();
+    }
+
+    public Color getQuotedColor(){
+        return getSyntaxScheme().getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground;
+    }
+
+    //'"
+    public void setErrorQuotedColor(Color color){
+        getSyntaxScheme().getStyle(Token.ERROR_STRING_DOUBLE).foreground = color;
+        getSyntaxScheme().getStyle(Token.ERROR_CHAR).foreground = color;
+        revalidate();
+    }
+
+    public Color getErrorQuotedColor(){
+        return getSyntaxScheme().getStyle(Token.ERROR_STRING_DOUBLE).foreground;
     }
 
     public void openNew(){
