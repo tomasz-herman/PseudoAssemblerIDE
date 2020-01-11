@@ -21,6 +21,7 @@ public class Main {
                     .setMaximized(true)
                     .setNothingOnClose()
                     .buildFrame();
+            layout.addCloseHandler();
         });
     }
 }
