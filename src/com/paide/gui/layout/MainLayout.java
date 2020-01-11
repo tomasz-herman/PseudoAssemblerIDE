@@ -21,7 +21,6 @@ import java.util.function.Consumer;
 public class MainLayout {
     public static final Font DEFAULT_FONT = new Font(Font.MONOSPACED, Font.PLAIN,18);
 
-
     private JPanel mainPane;
     private JScrollPane terminalPane;
     private RTextScrollPane editorPane;
@@ -59,6 +58,14 @@ public class MainLayout {
     }
 
     private void setupMenuItems(){
+        menuBar.getMenuItem("Help").addActionListener(e -> getTextDialog("Help", TextLayout.HELP));
+        menuBar.getMenuItem("About").addActionListener(e -> getTextDialog("About", TextLayout.ABOUT));
+        menuBar.getMenuItem("License").addActionListener(e -> getTextDialog("License", TextLayout.LICENSE));
+
+        menuBar.getMenuItem("Help").setAccelerator(KeyStroke.getKeyStroke("F1"));
+        menuBar.getMenuItem("About").setAccelerator(KeyStroke.getKeyStroke("F2"));
+        menuBar.getMenuItem("License").setAccelerator(KeyStroke.getKeyStroke("F3"));
+
         menuBar.getMenuItem("New").addActionListener(e -> editor.openNew());
         menuBar.getMenuItem("Close").addActionListener(e -> editor.close());
         menuBar.getMenuItem("Save").addActionListener(e -> editor.save());
@@ -109,6 +116,16 @@ public class MainLayout {
 
         menuBar.getMenuItem("Settings").addActionListener(e -> getSettingsDialog());
         menuBar.getMenuItem("Settings").setAccelerator(KeyStroke.getKeyStroke("ctrl alt S"));
+    }
+
+    private void getTextDialog(String title, String text) {
+        new WindowBuilder()
+                .setContentPane(new TextLayout(text).getMainPanel())
+                .setTitle(title)
+                .setResizable(false)
+                .setDocumentModal()
+                .setOwner((JFrame) SwingUtilities.getWindowAncestor(mainPane))
+                .buildDialog();
     }
 
     private void getSettingsDialog() {
