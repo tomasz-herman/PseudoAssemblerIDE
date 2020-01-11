@@ -12,16 +12,22 @@ public class Layout {
     private JScrollPane editorPane;
     private JScrollPane terminalPane;
     private Terminal terminal;
+    private com.paide.gui.MenuBar menuBar;
 
     public Layout(){
         JTextArea editor = new JTextArea();
         editor.setFont(DEFAULT_FONT);
         editor.setText("This is editor");
         terminal = new Terminal(terminalPane);
+        menuBar = new MenuBar();
         editorPane.setViewportView(editor);
     }
 
     public JPanel getMainPane(){
         return mainPane;
     }
+    public MenuBar getMenuBar() {
+        return menuBar;
+    }
+
 }
