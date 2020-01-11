@@ -23,17 +23,17 @@
         </properties>
         <border type="none"/>
         <children>
-          <scrollpane id="bfc07" binding="editorPane">
+          <scrollpane id="83187" binding="terminalPane">
             <constraints>
-              <splitpane position="left"/>
+              <splitpane position="right"/>
             </constraints>
             <properties/>
             <border type="none"/>
             <children/>
           </scrollpane>
-          <scrollpane id="83187" binding="terminalPane">
+          <scrollpane id="3150c" class="org.fife.ui.rtextarea.RTextScrollPane" binding="editorPane">
             <constraints>
-              <splitpane position="right"/>
+              <splitpane position="left"/>
             </constraints>
             <properties/>
             <border type="none"/>
