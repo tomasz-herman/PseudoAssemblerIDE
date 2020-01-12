@@ -299,7 +299,7 @@ public class Editor extends RSyntaxTextArea {
     }
 
     public boolean save(){
-        if(file == null || !file.exists()) return saveAs();
+        if(file == null) return saveAs();
         try {
             changed = false;
             Files.writeString(file.toPath(), getText());
