@@ -1,5 +1,6 @@
 package com.paide.gui.editor;
 
+import com.paide.Main;
 import com.paide.gui.layout.MainLayout;
 import com.paide.gui.emulator.Assembler;
 import org.fife.ui.rsyntaxtextarea.AbstractTokenMakerFactory;
@@ -337,7 +338,7 @@ public class Editor extends RSyntaxTextArea {
 
     private boolean showSaveChangesDialog(){
         if(!changed) return false;
-        int result = JOptionPane.showConfirmDialog(null, "Save changes before closing?", "", JOptionPane.YES_NO_CANCEL_OPTION);
+        int result = JOptionPane.showConfirmDialog(null, Main.I18N.getString("save.changes.before.closing"), "", JOptionPane.YES_NO_CANCEL_OPTION);
         if(result == JOptionPane.CANCEL_OPTION)return true;
         if(result == JOptionPane.YES_OPTION) return !save();
         return false;

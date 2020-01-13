@@ -1,6 +1,7 @@
 package com.paide.gui.layout;
 
 import com.hermant.program.Program;
+import com.paide.Main;
 import com.paide.gui.MenuBar;
 import com.paide.gui.WindowBuilder;
 import com.paide.gui.editor.Editor;
@@ -13,7 +14,6 @@ import sun.misc.Signal;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.function.Consumer;
@@ -58,64 +58,64 @@ public class MainLayout {
     }
 
     private void setupMenuItems(){
-        menuBar.getMenuItem("Help").addActionListener(e -> getTextDialog("Help", TextLayout.HELP));
-        menuBar.getMenuItem("About").addActionListener(e -> getTextDialog("About", TextLayout.ABOUT));
-        menuBar.getMenuItem("License").addActionListener(e -> getTextDialog("License", TextLayout.LICENSE));
+        menuBar.getMenuItem("help").addActionListener(e -> getTextDialog(Main.I18N.getString("help"), TextLayout.HELP));
+        menuBar.getMenuItem("about").addActionListener(e -> getTextDialog(Main.I18N.getString("about"), TextLayout.ABOUT));
+        menuBar.getMenuItem("license").addActionListener(e -> getTextDialog(Main.I18N.getString("license"), TextLayout.LICENSE));
 
-        menuBar.getMenuItem("Help").setAccelerator(KeyStroke.getKeyStroke("F1"));
-        menuBar.getMenuItem("About").setAccelerator(KeyStroke.getKeyStroke("F2"));
-        menuBar.getMenuItem("License").setAccelerator(KeyStroke.getKeyStroke("F3"));
+        menuBar.getMenuItem("help").setAccelerator(KeyStroke.getKeyStroke("F1"));
+        menuBar.getMenuItem("license").setAccelerator(KeyStroke.getKeyStroke("F2"));
+        menuBar.getMenuItem("about").setAccelerator(KeyStroke.getKeyStroke("F3"));
 
-        menuBar.getMenuItem("New").addActionListener(e -> editor.openNew());
-        menuBar.getMenuItem("Close").addActionListener(e -> editor.close());
-        menuBar.getMenuItem("Save").addActionListener(e -> editor.save());
-        menuBar.getMenuItem("Save as").addActionListener(e -> editor.saveAs());
-        menuBar.getMenuItem("Open").addActionListener(e -> editor.open());
-        menuBar.getMenuItem("Exit").addActionListener(e -> editor.exit());
+        menuBar.getMenuItem("new").addActionListener(e -> editor.openNew());
+        menuBar.getMenuItem("close").addActionListener(e -> editor.close());
+        menuBar.getMenuItem("save").addActionListener(e -> editor.save());
+        menuBar.getMenuItem("save.as").addActionListener(e -> editor.saveAs());
+        menuBar.getMenuItem("open").addActionListener(e -> editor.open());
+        menuBar.getMenuItem("exit").addActionListener(e -> editor.exit());
 
-        menuBar.getMenuItem("New").setAccelerator(KeyStroke.getKeyStroke("ctrl N"));
-        menuBar.getMenuItem("Save").setAccelerator(KeyStroke.getKeyStroke("ctrl S"));
-        menuBar.getMenuItem("Save as").setAccelerator(KeyStroke.getKeyStroke("ctrl shift S"));
-        menuBar.getMenuItem("Open").setAccelerator(KeyStroke.getKeyStroke("ctrl O"));
-        menuBar.getMenuItem("Close").setAccelerator(KeyStroke.getKeyStroke("F4"));
-        menuBar.getMenuItem("Exit").setAccelerator(KeyStroke.getKeyStroke("alt F4"));
+        menuBar.getMenuItem("new").setAccelerator(KeyStroke.getKeyStroke("ctrl N"));
+        menuBar.getMenuItem("save").setAccelerator(KeyStroke.getKeyStroke("ctrl S"));
+        menuBar.getMenuItem("save.as").setAccelerator(KeyStroke.getKeyStroke("ctrl shift S"));
+        menuBar.getMenuItem("open").setAccelerator(KeyStroke.getKeyStroke("ctrl O"));
+        menuBar.getMenuItem("close").setAccelerator(KeyStroke.getKeyStroke("F4"));
+        menuBar.getMenuItem("exit").setAccelerator(KeyStroke.getKeyStroke("alt F4"));
 
-        menuBar.getMenuItem("Undo").setAction(RTextArea.getAction(RTextArea.UNDO_ACTION));
-        menuBar.getMenuItem("Redo").setAction(RTextArea.getAction(RTextArea.REDO_ACTION));
-        menuBar.getMenuItem("Cut").setAction(RTextArea.getAction(RTextArea.CUT_ACTION));
-        menuBar.getMenuItem("Copy").setAction(RTextArea.getAction(RTextArea.COPY_ACTION));
-        menuBar.getMenuItem("Paste").setAction(RTextArea.getAction(RTextArea.PASTE_ACTION));
-        menuBar.getMenuItem("Delete").setAction(RTextArea.getAction(RTextArea.DELETE_ACTION));
-        menuBar.getMenuItem("Select all").setAction(RTextArea.getAction(RTextArea.SELECT_ALL_ACTION));
+        menuBar.getMenuItem("undo").setAction(RTextArea.getAction(RTextArea.UNDO_ACTION));
+        menuBar.getMenuItem("redo").setAction(RTextArea.getAction(RTextArea.REDO_ACTION));
+        menuBar.getMenuItem("cut").setAction(RTextArea.getAction(RTextArea.CUT_ACTION));
+        menuBar.getMenuItem("copy").setAction(RTextArea.getAction(RTextArea.COPY_ACTION));
+        menuBar.getMenuItem("paste").setAction(RTextArea.getAction(RTextArea.PASTE_ACTION));
+        menuBar.getMenuItem("delete").setAction(RTextArea.getAction(RTextArea.DELETE_ACTION));
+        menuBar.getMenuItem("select.all").setAction(RTextArea.getAction(RTextArea.SELECT_ALL_ACTION));
 
-        menuBar.getMenuItem("Undo").setAccelerator(KeyStroke.getKeyStroke("ctrl Z"));
-        menuBar.getMenuItem("Redo").setAccelerator(KeyStroke.getKeyStroke("ctrl Y"));
-        menuBar.getMenuItem("Cut").setAccelerator(KeyStroke.getKeyStroke("ctrl X"));
-        menuBar.getMenuItem("Copy").setAccelerator(KeyStroke.getKeyStroke("ctrl C"));
-        menuBar.getMenuItem("Paste").setAccelerator(KeyStroke.getKeyStroke("ctrl V"));
-        menuBar.getMenuItem("Delete").setAccelerator(KeyStroke.getKeyStroke("DELETE"));
-        menuBar.getMenuItem("Select all").setAccelerator(KeyStroke.getKeyStroke("ctrl A"));
+        menuBar.getMenuItem("undo").setAccelerator(KeyStroke.getKeyStroke("ctrl Z"));
+        menuBar.getMenuItem("redo").setAccelerator(KeyStroke.getKeyStroke("ctrl Y"));
+        menuBar.getMenuItem("cut").setAccelerator(KeyStroke.getKeyStroke("ctrl X"));
+        menuBar.getMenuItem("copy").setAccelerator(KeyStroke.getKeyStroke("ctrl C"));
+        menuBar.getMenuItem("paste").setAccelerator(KeyStroke.getKeyStroke("ctrl V"));
+        menuBar.getMenuItem("delete").setAccelerator(KeyStroke.getKeyStroke("DELETE"));
+        menuBar.getMenuItem("select.all").setAccelerator(KeyStroke.getKeyStroke("ctrl A"));
 
-        menuBar.getMenuItem("Undo").setToolTipText(null);
-        menuBar.getMenuItem("Redo").setToolTipText(null);
-        menuBar.getMenuItem("Cut").setToolTipText(null);
-        menuBar.getMenuItem("Copy").setToolTipText(null);
-        menuBar.getMenuItem("Paste").setToolTipText(null);
-        menuBar.getMenuItem("Delete").setToolTipText(null);
-        menuBar.getMenuItem("Select all").setToolTipText(null);
+        menuBar.getMenuItem("undo").setToolTipText(null);
+        menuBar.getMenuItem("redo").setToolTipText(null);
+        menuBar.getMenuItem("cut").setToolTipText(null);
+        menuBar.getMenuItem("copy").setToolTipText(null);
+        menuBar.getMenuItem("paste").setToolTipText(null);
+        menuBar.getMenuItem("delete").setToolTipText(null);
+        menuBar.getMenuItem("select.all").setToolTipText(null);
 
-        menuBar.getMenuItem("Run").addActionListener(e -> execute(emulator::run));
-        menuBar.getMenuItem("Debug").addActionListener(e -> execute(emulator::debug));
-        menuBar.getMenuItem("Assemble and load").addActionListener(e -> execute(emulator::load));
-        menuBar.getMenuItem("Assemble").addActionListener(e -> Assembler.assemble(editor));
+        menuBar.getMenuItem("run").addActionListener(e -> execute(emulator::run));
+        menuBar.getMenuItem("debug").addActionListener(e -> execute(emulator::debug));
+        menuBar.getMenuItem("assemble.and.load").addActionListener(e -> execute(emulator::load));
+        menuBar.getMenuItem("assemble").addActionListener(e -> Assembler.assemble(editor));
 
-        menuBar.getMenuItem("Run").setAccelerator(KeyStroke.getKeyStroke("ctrl F5"));
-        menuBar.getMenuItem("Debug").setAccelerator(KeyStroke.getKeyStroke("ctrl shift F5"));
-        menuBar.getMenuItem("Assemble and load").setAccelerator(KeyStroke.getKeyStroke("shift F5"));
-        menuBar.getMenuItem("Assemble").setAccelerator(KeyStroke.getKeyStroke("F5"));
+        menuBar.getMenuItem("run").setAccelerator(KeyStroke.getKeyStroke("ctrl F5"));
+        menuBar.getMenuItem("debug").setAccelerator(KeyStroke.getKeyStroke("ctrl shift F5"));
+        menuBar.getMenuItem("assemble.and.load").setAccelerator(KeyStroke.getKeyStroke("shift F5"));
+        menuBar.getMenuItem("assemble").setAccelerator(KeyStroke.getKeyStroke("F5"));
 
-        menuBar.getMenuItem("Settings").addActionListener(e -> getSettingsDialog());
-        menuBar.getMenuItem("Settings").setAccelerator(KeyStroke.getKeyStroke("ctrl alt S"));
+        menuBar.getMenuItem("settings").addActionListener(e -> getSettingsDialog());
+        menuBar.getMenuItem("settings").setAccelerator(KeyStroke.getKeyStroke("ctrl alt S"));
     }
 
     private void getTextDialog(String title, String text) {
@@ -131,7 +131,7 @@ public class MainLayout {
     private void getSettingsDialog() {
         new WindowBuilder()
                 .setContentPane(new SettingsLayout(editor, terminal).getMainPanel())
-                .setTitle("Settings")
+                .setTitle(Main.I18N.getString("settings"))
                 .setMinimumSize(480, 640)
                 .setPreferredSize(540, 720)
                 .setResizable(true)
@@ -158,7 +158,7 @@ public class MainLayout {
             running = false;
         });
         if (running) {
-            int result = JOptionPane.showConfirmDialog(null, "Some program is already running! Do you wish to stop it?", "Some program is running", JOptionPane.YES_NO_OPTION);
+            int result = JOptionPane.showConfirmDialog(null, Main.I18N.getString("some.program.is.already.running.do.you.wish.to.stop.it"), Main.I18N.getString("some.program.is.running"), JOptionPane.YES_NO_OPTION);
             if(result == JOptionPane.YES_OPTION){
                 while(running) Signal.raise(new Signal("INT"));
                 thread.start();

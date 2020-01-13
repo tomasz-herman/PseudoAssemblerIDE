@@ -23,7 +23,7 @@
           <grid id="cdefd" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <tabbedpane title="Font"/>
+              <tabbedpane title-resource-bundle="i18n" title-key="font"/>
             </constraints>
             <properties/>
             <border type="none"/>
@@ -34,7 +34,7 @@
                 </constraints>
                 <properties>
                   <font name="Monospaced" size="24" style="1"/>
-                  <text value="Font"/>
+                  <text resource-bundle="i18n" key="font"/>
                 </properties>
               </component>
               <grid id="194da" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -51,7 +51,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="Editor font size"/>
+                      <text resource-bundle="i18n" key="editor.font.size"/>
                     </properties>
                   </component>
                   <vspacer id="3bd46">
@@ -77,7 +77,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="Editor font"/>
+                      <text resource-bundle="i18n" key="editor.font"/>
                     </properties>
                   </component>
                   <component id="c10b8" class="javax.swing.JComboBox" binding="editorFontCombo">
@@ -96,7 +96,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="Terminal font"/>
+                      <text resource-bundle="i18n" key="terminal.font"/>
                     </properties>
                   </component>
                   <component id="ec64b" class="javax.swing.JLabel">
@@ -105,7 +105,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="Terminal font size"/>
+                      <text resource-bundle="i18n" key="terminal.font.size"/>
                     </properties>
                   </component>
                   <component id="78845" class="javax.swing.JComboBox" binding="terminalFontCombo">
@@ -156,7 +156,7 @@
           </grid>
           <scrollpane id="a6286">
             <constraints>
-              <tabbedpane title="Colors"/>
+              <tabbedpane title-resource-bundle="i18n" title-key="colors"/>
             </constraints>
             <properties/>
             <border type="none"/>
@@ -173,7 +173,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="24" style="1"/>
-                      <text value="Colors"/>
+                      <text resource-bundle="i18n" key="colors"/>
                     </properties>
                   </component>
                   <component id="1ab57" class="javax.swing.JLabel">
@@ -182,7 +182,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="background"/>
+                      <text resource-bundle="i18n" key="background"/>
                     </properties>
                   </component>
                   <grid id="cadbe" binding="editorBackgroundColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -202,7 +202,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="gutter"/>
+                      <text resource-bundle="i18n" key="gutter"/>
                     </properties>
                   </component>
                   <grid id="9bdc9" binding="gutterColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -220,7 +220,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="text"/>
+                      <text resource-bundle="i18n" key="text"/>
                     </properties>
                   </component>
                   <hspacer id="5e92b">
@@ -243,7 +243,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="function"/>
+                      <text resource-bundle="i18n" key="function"/>
                     </properties>
                   </component>
                   <grid id="84a4a" binding="functionColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -261,7 +261,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="function 2"/>
+                      <text resource-bundle="i18n" key="function.2"/>
                     </properties>
                   </component>
                   <grid id="3696" binding="function2Color" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -279,7 +279,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="declaration"/>
+                      <text resource-bundle="i18n" key="declaration"/>
                     </properties>
                   </component>
                   <grid id="1f9ae" binding="declarationColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -297,7 +297,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="operator"/>
+                      <text resource-bundle="i18n" key="operator"/>
                     </properties>
                   </component>
                   <grid id="f9cd7" binding="operatorColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -315,7 +315,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="data type"/>
+                      <text resource-bundle="i18n" key="data.type"/>
                     </properties>
                   </component>
                   <grid id="6c198" binding="dataTypeColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -333,7 +333,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="number"/>
+                      <text resource-bundle="i18n" key="number"/>
                     </properties>
                   </component>
                   <grid id="6b26e" binding="numberColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -351,7 +351,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="comment"/>
+                      <text resource-bundle="i18n" key="comment"/>
                     </properties>
                   </component>
                   <grid id="5dd33" binding="commentColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -369,7 +369,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="label"/>
+                      <text resource-bundle="i18n" key="label"/>
                     </properties>
                   </component>
                   <grid id="4398d" binding="labelColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -387,7 +387,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="brackets"/>
+                      <text resource-bundle="i18n" key="brackets"/>
                     </properties>
                   </component>
                   <grid id="eb918" binding="bracketsColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -405,7 +405,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="quoted"/>
+                      <text resource-bundle="i18n" key="quoted"/>
                     </properties>
                   </component>
                   <grid id="8c31" binding="quotedColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -423,7 +423,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="error quoted"/>
+                      <text resource-bundle="i18n" key="error.quoted"/>
                     </properties>
                   </component>
                   <grid id="7b924" binding="errorQuotedColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -441,7 +441,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="current line"/>
+                      <text resource-bundle="i18n" key="current.line"/>
                     </properties>
                   </component>
                   <grid id="b6bd3" binding="currentLineColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -459,7 +459,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="selection"/>
+                      <text resource-bundle="i18n" key="selection"/>
                     </properties>
                   </component>
                   <grid id="7e82b" binding="editorSelectionColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -477,7 +477,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="20" style="0"/>
-                      <text value="Terminal color scheme"/>
+                      <text resource-bundle="i18n" key="terminal.color.scheme"/>
                     </properties>
                   </component>
                   <component id="39fa7" class="javax.swing.JLabel">
@@ -486,7 +486,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="selected text"/>
+                      <text resource-bundle="i18n" key="selected.text"/>
                     </properties>
                   </component>
                   <grid id="b4ff1" binding="editorSelectedTextColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -504,7 +504,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="background"/>
+                      <text resource-bundle="i18n" key="background"/>
                     </properties>
                   </component>
                   <grid id="208d7" binding="terminalBackgroundColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -522,7 +522,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="text"/>
+                      <text resource-bundle="i18n" key="text"/>
                     </properties>
                   </component>
                   <grid id="5dd02" binding="terminalTextColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -540,7 +540,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="selection"/>
+                      <text resource-bundle="i18n" key="selection"/>
                     </properties>
                   </component>
                   <grid id="58e7a" binding="terminalSelectionColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -558,7 +558,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="16" style="0"/>
-                      <text value="selected text"/>
+                      <text resource-bundle="i18n" key="selected.text"/>
                     </properties>
                   </component>
                   <grid id="719f3" binding="terminalSelectedTextColor" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -576,7 +576,7 @@
                     </constraints>
                     <properties>
                       <font name="Monospaced" size="20" style="0"/>
-                      <text value="Editor color scheme"/>
+                      <text resource-bundle="i18n" key="editor.color.scheme"/>
                     </properties>
                   </component>
                 </children>
@@ -586,7 +586,7 @@
           <grid id="1dba4" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <tabbedpane title="General"/>
+              <tabbedpane title-resource-bundle="i18n" title-key="general"/>
             </constraints>
             <properties/>
             <border type="none"/>
@@ -597,7 +597,7 @@
                 </constraints>
                 <properties>
                   <font name="Monospaced" size="24" style="1"/>
-                  <text value="General"/>
+                  <text resource-bundle="i18n" key="general"/>
                 </properties>
               </component>
               <vspacer id="64303">
@@ -611,7 +611,7 @@
                 </constraints>
                 <properties>
                   <font name="Monospaced" size="18" style="0"/>
-                  <text value="show line numbers"/>
+                  <text resource-bundle="i18n" key="show.line.numbers"/>
                 </properties>
               </component>
               <component id="dc913" class="javax.swing.JCheckBox" binding="showIconRowHeaderCheckBox" default-binding="true">
@@ -620,7 +620,7 @@
                 </constraints>
                 <properties>
                   <font name="Monospaced" size="18" style="0"/>
-                  <text value="show icon row header"/>
+                  <text resource-bundle="i18n" key="show.icon.row.header"/>
                 </properties>
               </component>
               <component id="91482" class="javax.swing.JCheckBox" binding="wrapLinesCheckBox" default-binding="true">
@@ -629,7 +629,7 @@
                 </constraints>
                 <properties>
                   <font name="Monospaced" size="18" style="0"/>
-                  <text value="wrap lines"/>
+                  <text resource-bundle="i18n" key="wrap.lines"/>
                 </properties>
               </component>
             </children>
@@ -652,7 +652,7 @@
             </constraints>
             <properties>
               <font name="Monospaced" size="18" style="0"/>
-              <text value="Cancel"/>
+              <text resource-bundle="i18n" key="cancel"/>
             </properties>
           </component>
           <hspacer id="cfe87">
@@ -668,7 +668,7 @@
             </constraints>
             <properties>
               <font name="Monospaced" size="18" style="0"/>
-              <text value="Apply"/>
+              <text resource-bundle="i18n" key="apply"/>
             </properties>
           </component>
           <component id="28f53" class="javax.swing.JButton" binding="okButton" default-binding="true">
@@ -679,7 +679,7 @@
             </constraints>
             <properties>
               <font name="Monospaced" size="18" style="0"/>
-              <text value="Ok"/>
+              <text resource-bundle="i18n" key="ok"/>
             </properties>
           </component>
         </children>

@@ -5,9 +5,10 @@ import com.paide.gui.layout.MainLayout;
 import com.paide.gui.WindowBuilder;
 
 import javax.swing.*;
+import java.util.ResourceBundle;
 
 public class Main {
-
+    public static final ResourceBundle I18N = ResourceBundle.getBundle("i18n");
     public static void main(String[] args) {
         FlatIntelliJLaf.install();
         SwingUtilities.invokeLater(() -> {

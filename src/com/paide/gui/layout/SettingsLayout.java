@@ -1,5 +1,6 @@
 package com.paide.gui.layout;
 
+import com.paide.Main;
 import com.paide.gui.editor.Editor;
 import com.paide.gui.terminal.Terminal;
 
@@ -157,7 +158,7 @@ public class SettingsLayout {
             public void mouseClicked(MouseEvent mouseEvent) { }
             @Override
             public void mousePressed(MouseEvent mouseEvent) {
-                Color color = JColorChooser.showDialog(null, "Choose color", panel.getBackground());
+                Color color = JColorChooser.showDialog(null, Main.I18N.getString("choose.color"), panel.getBackground());
                 panel.setBackground(color);
             }
             @Override
