@@ -1,12 +1,13 @@
 package com.paide.settings;
 
+import java.awt.*;
 import java.util.prefs.Preferences;
 
 public class Settings {
 
     private Preferences preferences = Preferences.userRoot().node("com/paide");
 
-    private int editorBackground;
+    private int editorBackgroundColor;
     private int editorTextColor;
     private int editorGutterColor;
     private int editorInstructionColor;
@@ -23,7 +24,7 @@ public class Settings {
     private int editorCurrentLineHighlightColor;
     private int editorSelectionColor;
     private int editorSelectedTextColor;
-    private int terminalBackground;
+    private int terminalBackgroundColor;
     private int terminalTextColor;
     private int terminalSelectionColor;
     private int terminalSelectedTextColor;
@@ -40,7 +41,7 @@ public class Settings {
     }
 
     public void load(){
-        editorBackground = preferences.getInt("editorBackground", 0);
+        editorBackgroundColor = preferences.getInt("editorBackground", 0);
         editorTextColor = preferences.getInt("editorTextColor", 0);
         editorGutterColor = preferences.getInt("editorGutterColor", 0);
         editorInstructionColor = preferences.getInt("editorInstructionColor", 0);
@@ -57,7 +58,7 @@ public class Settings {
         editorCurrentLineHighlightColor = preferences.getInt("editorCurrentLineHighlightColor", 0);
         editorSelectionColor = preferences.getInt("editorSelectionColor", 0);
         editorSelectedTextColor = preferences.getInt("editorSelectedTextColor", 0);
-        terminalBackground = preferences.getInt("terminalBackground", 0);
+        terminalBackgroundColor = preferences.getInt("terminalBackground", 0);
         terminalTextColor = preferences.getInt("terminalTextColor", 0);
         terminalSelectionColor = preferences.getInt("terminalSelectionColor", 0);
         terminalSelectedTextColor = preferences.getInt("terminalSelectedTextColor", 0);
@@ -71,7 +72,7 @@ public class Settings {
     }
 
     public void save(){
-        preferences.putInt("editorBackground", editorBackground);
+        preferences.putInt("editorBackground", editorBackgroundColor);
         preferences.putInt("editorTextColor", editorTextColor);
         preferences.putInt("editorGutterColor", editorGutterColor);
         preferences.putInt("editorInstructionColor", editorInstructionColor);
@@ -88,7 +89,7 @@ public class Settings {
         preferences.putInt("editorCurrentLineHighlightColor", editorCurrentLineHighlightColor);
         preferences.putInt("editorSelectionColor", editorSelectionColor);
         preferences.putInt("editorSelectedTextColor", editorSelectedTextColor);
-        preferences.putInt("terminalBackground", terminalBackground);
+        preferences.putInt("terminalBackground", terminalBackgroundColor);
         preferences.putInt("terminalTextColor", terminalTextColor);
         preferences.putInt("terminalSelectionColor", terminalSelectionColor);
         preferences.putInt("terminalSelectedTextColor", terminalSelectedTextColor);
@@ -101,227 +102,255 @@ public class Settings {
         preferences.putInt("terminalFontSize", terminalFontSize);
     }
 
-    public int getEditorBackground() {
-        return editorBackground;
+    public Color getEditorBackgroundColor() {
+        return new Color(editorBackgroundColor);
     }
 
-    public void setEditorBackground(int editorBackground) {
-        this.editorBackground = editorBackground;
+    public Color setEditorBackgroundColor(Color editorBackgroundColor) {
+        this.editorBackgroundColor = editorBackgroundColor.getRGB();
+        return editorBackgroundColor;
     }
 
-    public int getEditorTextColor() {
+    public Color getEditorTextColor() {
+        return new Color(editorTextColor);
+    }
+
+    public Color setEditorTextColor(Color editorTextColor) {
+        this.editorTextColor = editorTextColor.getRGB();
         return editorTextColor;
     }
 
-    public void setEditorTextColor(int editorTextColor) {
-        this.editorTextColor = editorTextColor;
+    public Color getEditorGutterColor() {
+        return new Color(editorGutterColor);
     }
 
-    public int getEditorGutterColor() {
+    public Color setEditorGutterColor(Color editorGutterColor) {
+        this.editorGutterColor = editorGutterColor.getRGB();
         return editorGutterColor;
     }
 
-    public void setEditorGutterColor(int editorGutterColor) {
-        this.editorGutterColor = editorGutterColor;
+    public Color getEditorInstructionColor() {
+        return new Color(editorInstructionColor);
     }
 
-    public int getEditorInstructionColor() {
+    public Color setEditorInstructionColor(Color editorInstructionColor) {
+        this.editorInstructionColor = editorInstructionColor.getRGB();
         return editorInstructionColor;
     }
 
-    public void setEditorInstructionColor(int editorInstructionColor) {
-        this.editorInstructionColor = editorInstructionColor;
+    public Color getEditorTerminalInstructionColor() {
+        return new Color(editorTerminalInstructionColor);
     }
 
-    public int getEditorTerminalInstructionColor() {
+    public Color setEditorTerminalInstructionColor(Color editorTerminalInstructionColor) {
+        this.editorTerminalInstructionColor = editorTerminalInstructionColor.getRGB();
         return editorTerminalInstructionColor;
     }
 
-    public void setEditorTerminalInstructionColor(int editorTerminalInstructionColor) {
-        this.editorTerminalInstructionColor = editorTerminalInstructionColor;
+    public Color getEditorDeclarationColor() {
+        return new Color(editorDeclarationColor);
     }
 
-    public int getEditorDeclarationColor() {
+    public Color setEditorDeclarationColor(Color editorDeclarationColor) {
+        this.editorDeclarationColor = editorDeclarationColor.getRGB();
         return editorDeclarationColor;
     }
 
-    public void setEditorDeclarationColor(int editorDeclarationColor) {
-        this.editorDeclarationColor = editorDeclarationColor;
+    public Color getEditorOperatorColor() {
+        return new Color(editorOperatorColor);
     }
 
-    public int getEditorOperatorColor() {
+    public Color setEditorOperatorColor(Color editorOperatorColor) {
+        this.editorOperatorColor = editorOperatorColor.getRGB();
         return editorOperatorColor;
     }
 
-    public void setEditorOperatorColor(int editorOperatorColor) {
-        this.editorOperatorColor = editorOperatorColor;
+    public Color getEditorDataTypeColor() {
+        return new Color(editorDataTypeColor);
     }
 
-    public int getEditorDataTypeColor() {
+    public Color setEditorDataTypeColor(Color editorDataTypeColor) {
+        this.editorDataTypeColor = editorDataTypeColor.getRGB();
         return editorDataTypeColor;
     }
 
-    public void setEditorDataTypeColor(int editorDataTypeColor) {
-        this.editorDataTypeColor = editorDataTypeColor;
+    public Color getEditorNumberColor() {
+        return new Color(editorNumberColor);
     }
 
-    public int getEditorNumberColor() {
+    public Color setEditorNumberColor(Color editorNumberColor) {
+        this.editorNumberColor = editorNumberColor.getRGB();
         return editorNumberColor;
     }
 
-    public void setEditorNumberColor(int editorNumberColor) {
-        this.editorNumberColor = editorNumberColor;
+    public Color getEditorCommentColor() {
+        return new Color(editorCommentColor);
     }
 
-    public int getEditorCommentColor() {
+    public Color setEditorCommentColor(Color editorCommentColor) {
+        this.editorCommentColor = editorCommentColor.getRGB();
         return editorCommentColor;
     }
 
-    public void setEditorCommentColor(int editorCommentColor) {
-        this.editorCommentColor = editorCommentColor;
+    public Color getEditorSeparatorColor() {
+        return new Color(editorSeparatorColor);
     }
 
-    public int getEditorSeparatorColor() {
+    public Color setEditorSeparatorColor(Color editorSeparatorColor) {
+        this.editorSeparatorColor = editorSeparatorColor.getRGB();
         return editorSeparatorColor;
     }
 
-    public void setEditorSeparatorColor(int editorSeparatorColor) {
-        this.editorSeparatorColor = editorSeparatorColor;
+    public Color getEditorLabelColor() {
+        return new Color(editorLabelColor);
     }
 
-    public int getEditorLabelColor() {
+    public Color setEditorLabelColor(Color editorLabelColor) {
+        this.editorLabelColor = editorLabelColor.getRGB();
         return editorLabelColor;
     }
 
-    public void setEditorLabelColor(int editorLabelColor) {
-        this.editorLabelColor = editorLabelColor;
+    public Color getEditorQuotedColor() {
+        return new Color(editorQuotedColor);
     }
 
-    public int getEditorQuotedColor() {
+    public Color setEditorQuotedColor(Color editorQuotedColor) {
+        this.editorQuotedColor = editorQuotedColor.getRGB();
         return editorQuotedColor;
     }
 
-    public void setEditorQuotedColor(int editorQuotedColor) {
-        this.editorQuotedColor = editorQuotedColor;
+    public Color getEditorErrorQuotedColor() {
+        return new Color(editorErrorQuotedColor);
     }
 
-    public int getEditorErrorQuotedColor() {
+    public Color setEditorErrorQuotedColor(Color editorErrorQuotedColor) {
+        this.editorErrorQuotedColor = editorErrorQuotedColor.getRGB();
         return editorErrorQuotedColor;
     }
 
-    public void setEditorErrorQuotedColor(int editorErrorQuotedColor) {
-        this.editorErrorQuotedColor = editorErrorQuotedColor;
+    public Color getEditorCurrentLineHighlightColor() {
+        return new Color(editorCurrentLineHighlightColor);
     }
 
-    public int getEditorCurrentLineHighlightColor() {
+    public Color setEditorCurrentLineHighlightColor(Color editorCurrentLineHighlightColor) {
+        this.editorCurrentLineHighlightColor = editorCurrentLineHighlightColor.getRGB();
         return editorCurrentLineHighlightColor;
     }
 
-    public void setEditorCurrentLineHighlightColor(int editorCurrentLineHighlightColor) {
-        this.editorCurrentLineHighlightColor = editorCurrentLineHighlightColor;
+    public Color getEditorSelectionColor() {
+        return new Color(editorSelectionColor);
     }
 
-    public int getEditorSelectionColor() {
+    public Color setEditorSelectionColor(Color editorSelectionColor) {
+        this.editorSelectionColor = editorSelectionColor.getRGB();
         return editorSelectionColor;
     }
 
-    public void setEditorSelectionColor(int editorSelectionColor) {
-        this.editorSelectionColor = editorSelectionColor;
+    public Color getEditorSelectedTextColor() {
+        return new Color(editorSelectedTextColor);
     }
 
-    public int getEditorSelectedTextColor() {
+    public Color setEditorSelectedTextColor(Color editorSelectedTextColor) {
+        this.editorSelectedTextColor = editorSelectedTextColor.getRGB();
         return editorSelectedTextColor;
     }
 
-    public void setEditorSelectedTextColor(int editorSelectedTextColor) {
-        this.editorSelectedTextColor = editorSelectedTextColor;
+    public Color getTerminalBackgroundColor() {
+        return new Color(terminalBackgroundColor);
     }
 
-    public int getTerminalBackground() {
-        return terminalBackground;
+    public Color setTerminalBackgroundColor(Color terminalBackgroundColor) {
+        this.terminalBackgroundColor = terminalBackgroundColor.getRGB();
+        return terminalBackgroundColor;
     }
 
-    public void setTerminalBackground(int terminalBackground) {
-        this.terminalBackground = terminalBackground;
+    public Color getTerminalTextColor() {
+        return new Color(terminalTextColor);
     }
 
-    public int getTerminalTextColor() {
+    public Color setTerminalTextColor(Color terminalTextColor) {
+        this.terminalTextColor = terminalTextColor.getRGB();
         return terminalTextColor;
     }
 
-    public void setTerminalTextColor(int terminalTextColor) {
-        this.terminalTextColor = terminalTextColor;
+    public Color getTerminalSelectionColor() {
+        return new Color(terminalSelectionColor);
     }
 
-    public int getTerminalSelectionColor() {
+    public Color setTerminalSelectionColor(Color terminalSelectionColor) {
+        this.terminalSelectionColor = terminalSelectionColor.getRGB();
         return terminalSelectionColor;
     }
 
-    public void setTerminalSelectionColor(int terminalSelectionColor) {
-        this.terminalSelectionColor = terminalSelectionColor;
+    public Color getTerminalSelectedTextColor() {
+        return new Color(terminalSelectedTextColor);
     }
 
-    public int getTerminalSelectedTextColor() {
+    public Color setTerminalSelectedTextColor(Color terminalSelectedTextColor) {
+        this.terminalSelectedTextColor = terminalSelectedTextColor.getRGB();
         return terminalSelectedTextColor;
-    }
-
-    public void setTerminalSelectedTextColor(int terminalSelectedTextColor) {
-        this.terminalSelectedTextColor = terminalSelectedTextColor;
     }
 
     public boolean isEditorIconRowHeader() {
         return editorIconRowHeader;
     }
 
-    public void setEditorIconRowHeader(boolean editorIconRowHeader) {
+    public boolean setEditorIconRowHeader(boolean editorIconRowHeader) {
         this.editorIconRowHeader = editorIconRowHeader;
+        return editorIconRowHeader;
     }
 
     public boolean isEditorLineNumbers() {
         return editorLineNumbers;
     }
 
-    public void setEditorLineNumbers(boolean editorLineNumbers) {
+    public boolean setEditorLineNumbers(boolean editorLineNumbers) {
         this.editorLineNumbers = editorLineNumbers;
+        return editorLineNumbers;
     }
 
     public boolean isEditorLineWrap() {
         return editorLineWrap;
     }
 
-    public void setEditorLineWrap(boolean editorLineWrap) {
+    public boolean setEditorLineWrap(boolean editorLineWrap) {
         this.editorLineWrap = editorLineWrap;
+        return editorLineWrap;
     }
 
     public String getEditorFontName() {
         return editorFontName;
     }
 
-    public void setEditorFontName(String editorFontName) {
+    public String setEditorFontName(String editorFontName) {
         this.editorFontName = editorFontName;
+        return editorFontName;
     }
 
     public int getEditorFontSize() {
         return editorFontSize;
     }
 
-    public void setEditorFontSize(int editorFontSize) {
+    public int setEditorFontSize(int editorFontSize) {
         this.editorFontSize = editorFontSize;
+        return editorFontSize;
     }
 
     public String getTerminalFontName() {
         return terminalFontName;
     }
 
-    public void setTerminalFontName(String terminalFontName) {
+    public String setTerminalFontName(String terminalFontName) {
         this.terminalFontName = terminalFontName;
+        return terminalFontName;
     }
 
     public int getTerminalFontSize() {
         return terminalFontSize;
     }
 
-    public void setTerminalFontSize(int terminalFontSize) {
+    public int setTerminalFontSize(int terminalFontSize) {
         this.terminalFontSize = terminalFontSize;
+        return terminalFontSize;
     }
 }
