@@ -8,6 +8,7 @@ import com.paide.gui.editor.Editor;
 import com.paide.gui.emulator.Assembler;
 import com.paide.gui.emulator.Emulator;
 import com.paide.gui.terminal.Terminal;
+import com.paide.settings.Settings;
 import org.fife.ui.rtextarea.RTextArea;
 import org.fife.ui.rtextarea.RTextScrollPane;
 import sun.misc.Signal;
@@ -32,8 +33,9 @@ public class MainLayout {
     private volatile boolean running = false;
 
     public MainLayout(){
-        terminal = new Terminal(terminalPane);
-        editor = new Editor(editorPane);
+        Settings settings = new Settings();
+        terminal = new Terminal(terminalPane, settings);
+        editor = new Editor(editorPane, settings);
         menuBar = new com.paide.gui.MenuBar();
         emulator = new Emulator();
         UIManager.put("ToolTip.font", DEFAULT_FONT);
