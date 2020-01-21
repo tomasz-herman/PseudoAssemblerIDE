@@ -1,6 +1,7 @@
 package com.paide.gui.terminal;
 
 import com.paide.gui.layout.MainLayout;
+import com.paide.settings.Settings;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -14,6 +15,16 @@ public class Terminal extends JTextArea {
     private int verticalScrollBarMaximumValue;
     private TerminalInputStream inputStream;
     private TerminalOutputStream outputStream;
+
+    public Terminal(@NotNull JScrollPane scrollPane, Settings settings){
+        this(scrollPane);
+        applySettings(settings);
+    }
+
+    public Terminal(Settings settings){
+        this();
+        applySettings(settings);
+    }
 
     public Terminal(@NotNull JScrollPane scrollPane){
         this();
@@ -37,6 +48,14 @@ public class Terminal extends JTextArea {
         outputStream = (TerminalOutputStream)createOutputStream();
         registerKeyboardAction(getActionForKeyStroke(KeyStroke.getKeyStroke("ctrl C")), KeyStroke.getKeyStroke("ctrl shift C"), WHEN_FOCUSED);
         getInputMap().remove(KeyStroke.getKeyStroke("ctrl C"));
+    }
+
+    public void applySettings(Settings settings){
+        setFont(new Font(settings.getTerminalFontName(), Font.PLAIN, settings.getTerminalFontSize()));
+        setSelectedTextColor(settings.getTerminalSelectedTextColor());
+        setSelectionColor(settings.getTerminalSelectionColor());
+        setTextColor(settings.getTerminalTextColor());
+        setBackgroundColor(settings.getTerminalBackgroundColor());
     }
 
     private void disableArrowKeys() {

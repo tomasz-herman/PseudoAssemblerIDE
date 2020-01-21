@@ -117,9 +117,11 @@ public class SettingsLayout {
     }
 
     public void apply(Editor editor, Terminal terminal){
-        applyFonts(editor, terminal);
-        applyColors(editor, terminal);
-        applyOthers(editor, terminal);
+        readFontsSettings();
+        readColorSettings();
+        readOtherSettings();
+        terminal.applySettings(settings);
+        editor.applySettings(settings);
         settings.save();
     }
 
@@ -127,34 +129,34 @@ public class SettingsLayout {
         SwingUtilities.getWindowAncestor(mainPanel).dispose();
     }
 
-    public void applyColors(Editor editor, Terminal terminal){
-        editor.setBackground(settings.setEditorBackgroundColor(editorBackgroundColor.getBackground()));
-        editor.setTextColor(settings.setEditorTextColor(editorTextColor.getBackground()));
-        editor.setGutterBackgroundColor(settings.setEditorGutterColor(gutterColor.getBackground()));
-        editor.setInstructionColor(settings.setEditorInstructionColor(functionColor.getBackground()));
-        editor.setTerminalInstructionColor(settings.setEditorTerminalInstructionColor(function2Color.getBackground()));
-        editor.setDeclarationColor(settings.setEditorDeclarationColor(declarationColor.getBackground()));
-        editor.setOperatorColor(settings.setEditorOperatorColor(operatorColor.getBackground()));
-        editor.setDataTypeColor(settings.setEditorDataTypeColor(dataTypeColor.getBackground()));
-        editor.setNumberColor(settings.setEditorNumberColor(numberColor.getBackground()));
-        editor.setCommentColor(settings.setEditorCommentColor(commentColor.getBackground()));
-        editor.setSeparatorColor(settings.setEditorSeparatorColor(bracketsColor.getBackground()));
-        editor.setLabelColor(settings.setEditorLabelColor(labelColor.getBackground()));
-        editor.setQuotedColor(settings.setEditorQuotedColor(quotedColor.getBackground()));
-        editor.setErrorQuotedColor(settings.setEditorErrorQuotedColor(errorQuotedColor.getBackground()));
-        editor.setCurrentLineHighlightColor(settings.setEditorCurrentLineHighlightColor(currentLineColor.getBackground()));
-        editor.setSelectionColor(settings.setEditorSelectionColor(terminalSelectionColor.getBackground()));
-        editor.setSelectedTextColor(settings.setEditorSelectedTextColor(terminalSelectedTextColor.getBackground()));
-        terminal.setBackgroundColor(settings.setTerminalBackgroundColor(terminalBackgroundColor.getBackground()));
-        terminal.setTextColor(settings.setTerminalTextColor(terminalTextColor.getBackground()));
-        terminal.setSelectionColor(settings.setTerminalSelectionColor(terminalSelectionColor.getBackground()));
-        terminal.setSelectedTextColor(settings.setTerminalSelectedTextColor(terminalSelectedTextColor.getBackground()));
+    public void readColorSettings(){
+        settings.setEditorBackgroundColor(editorBackgroundColor.getBackground());
+        settings.setEditorTextColor(editorTextColor.getBackground());
+        settings.setEditorGutterColor(gutterColor.getBackground());
+        settings.setEditorInstructionColor(functionColor.getBackground());
+        settings.setEditorTerminalInstructionColor(function2Color.getBackground());
+        settings.setEditorDeclarationColor(declarationColor.getBackground());
+        settings.setEditorOperatorColor(operatorColor.getBackground());
+        settings.setEditorDataTypeColor(dataTypeColor.getBackground());
+        settings.setEditorNumberColor(numberColor.getBackground());
+        settings.setEditorCommentColor(commentColor.getBackground());
+        settings.setEditorSeparatorColor(bracketsColor.getBackground());
+        settings.setEditorLabelColor(labelColor.getBackground());
+        settings.setEditorQuotedColor(quotedColor.getBackground());
+        settings.setEditorErrorQuotedColor(errorQuotedColor.getBackground());
+        settings.setEditorCurrentLineHighlightColor(currentLineColor.getBackground());
+        settings.setEditorSelectionColor(terminalSelectionColor.getBackground());
+        settings.setEditorSelectedTextColor(terminalSelectedTextColor.getBackground());
+        settings.setTerminalBackgroundColor(terminalBackgroundColor.getBackground());
+        settings.setTerminalTextColor(terminalTextColor.getBackground());
+        settings.setTerminalSelectionColor(terminalSelectionColor.getBackground());
+        settings.setTerminalSelectedTextColor(terminalSelectedTextColor.getBackground());
     }
 
-    private void applyOthers(Editor editor, Terminal terminal){
-        editor.setIconRowHeaderEnabled(settings.setEditorIconRowHeader(showIconRowHeaderCheckBox.isSelected()));
-        editor.setLineNumbersEnabled(settings.setEditorLineNumbers(showLineNumbersCheckBox.isSelected()));
-        editor.setLineWrap(settings.setEditorLineWrap(wrapLinesCheckBox.isSelected()));
+    private void readOtherSettings(){
+        settings.setEditorIconRowHeader(showIconRowHeaderCheckBox.isSelected());
+        settings.setEditorLineNumbers(showLineNumbersCheckBox.isSelected());
+        settings.setEditorLineWrap(wrapLinesCheckBox.isSelected());
     }
 
     private JPanel setupColorChooser(JPanel panel){
@@ -177,10 +179,13 @@ public class SettingsLayout {
         return panel;
     }
 
-    public void applyFonts(Editor editor, Terminal terminal){
-        editor.setFont(new Font(settings.setEditorFontName((String)editorFontCombo.getSelectedItem()), java.awt.Font.PLAIN, settings.setEditorFontSize(Integer.parseUnsignedInt(editorFontSize.getText()))));
-        editor.setGutterFont(new Font(settings.setEditorFontName((String)editorFontCombo.getSelectedItem()), java.awt.Font.PLAIN, settings.setEditorFontSize(Integer.parseUnsignedInt(editorFontSize.getText()))));
-        terminal.setFont(new Font(settings.setTerminalFontName((String)terminalFontCombo.getSelectedItem()), java.awt.Font.PLAIN, settings.setTerminalFontSize(Integer.parseUnsignedInt(terminalFontSize.getText()))));
+    public void readFontsSettings(){
+        settings.setEditorFontName((String)editorFontCombo.getSelectedItem());
+        settings.setEditorFontSize(Integer.parseUnsignedInt(editorFontSize.getText()));
+        settings.setEditorFontName((String)editorFontCombo.getSelectedItem());
+        settings.setEditorFontSize(Integer.parseUnsignedInt(editorFontSize.getText()));
+        settings.setTerminalFontName((String)terminalFontCombo.getSelectedItem());
+        settings.setTerminalFontSize(Integer.parseUnsignedInt(terminalFontSize.getText()));
     }
 
     public JPanel getMainPanel(){

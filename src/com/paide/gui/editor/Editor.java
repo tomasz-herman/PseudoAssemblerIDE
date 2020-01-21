@@ -3,6 +3,7 @@ package com.paide.gui.editor;
 import com.paide.Main;
 import com.paide.gui.layout.MainLayout;
 import com.paide.gui.emulator.Assembler;
+import com.paide.settings.Settings;
 import org.fife.ui.rsyntaxtextarea.AbstractTokenMakerFactory;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.Token;
@@ -27,17 +28,47 @@ public class Editor extends RSyntaxTextArea {
     private RTextScrollPane panel;
     private static final ImageIcon ERROR_ICON = new ImageIcon("./res/error16x16.png");
 
+    public Editor(RTextScrollPane panel, Settings settings) {
+        this(panel);
+        applySettings(settings);
+    }
+
     public Editor(RTextScrollPane panel) {
         this.panel = panel;
         setupFileChoosers();
         setupScrollPane();
         setupHighlighting();
-        setupDefaultTheme();
+        setup();
         setupChangeListener();
         setupHyperlinksSupport();
         registerKeyboardAction(getActionForKeyStroke(KeyStroke.getKeyStroke("ctrl Y")), KeyStroke.getKeyStroke("ctrl shift Z"), WHEN_FOCUSED);
         addParser(new Assembler());
         discardAllEdits();
+    }
+
+    public void applySettings(Settings settings){
+        setBackground(settings.getEditorBackgroundColor());
+        setTextColor(settings.getEditorTextColor());
+        setGutterBackgroundColor(settings.getEditorGutterColor());
+        setInstructionColor(settings.getEditorInstructionColor());
+        setTerminalInstructionColor(settings.getEditorTerminalInstructionColor());
+        setDeclarationColor(settings.getEditorDeclarationColor());
+        setOperatorColor(settings.getEditorOperatorColor());
+        setDataTypeColor(settings.getEditorDataTypeColor());
+        setNumberColor(settings.getEditorNumberColor());
+        setCommentColor(settings.getEditorCommentColor());
+        setSeparatorColor(settings.getEditorSeparatorColor());
+        setLabelColor(settings.getEditorLabelColor());
+        setQuotedColor(settings.getEditorQuotedColor());
+        setErrorQuotedColor(settings.getEditorErrorQuotedColor());
+        setCurrentLineHighlightColor(settings.getEditorCurrentLineHighlightColor());
+        setSelectionColor(settings.getEditorSelectionColor());
+        setSelectedTextColor(settings.getEditorSelectedTextColor());
+        setIconRowHeaderEnabled(settings.isEditorIconRowHeader());
+        setLineNumbersEnabled(settings.isEditorLineNumbers());
+        setLineWrap(settings.isEditorLineWrap());
+        setFont(new Font(settings.getEditorFontName(), java.awt.Font.PLAIN, settings.getEditorFontSize()));
+        setGutterFont(new Font(settings.getEditorFontName(), java.awt.Font.PLAIN, settings.getEditorFontSize()));
     }
 
     private void setupHyperlinksSupport() {
@@ -95,17 +126,10 @@ public class Editor extends RSyntaxTextArea {
         });
     }
 
-    private void setupDefaultTheme(){
+    private void setup(){
         setTabsEmulated(true);
         setTabSize(4);
         setFadeCurrentLineHighlight(true);
-        setFont(MainLayout.DEFAULT_FONT);
-        setGutterFont(MainLayout.DEFAULT_FONT);
-        setCurrentLineHighlightColor(new JScrollPane().getBackground());
-        setBackground(new JTextArea().getBackground());
-        setTextColor(new JTextArea().getForeground());
-        setGutterBackgroundColor(new JScrollPane().getBackground());
-        revalidate();
         setEditable(false);
         setEnabled(false);
     }
