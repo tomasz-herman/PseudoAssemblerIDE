@@ -1,9 +1,39 @@
 package com.paide.settings;
 
+import com.paide.gui.terminal.Terminal;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.Token;
+
+import javax.swing.*;
 import java.awt.*;
 import java.util.prefs.Preferences;
 
 public class Settings {
+
+    private static final String DEFAULT_MONOSPACED_FONT = Font.MONOSPACED;
+    private static final int DEFAULT_EDITOR_BACKGROUND_COLOR = new JTextArea().getBackground().getRGB();
+    private static final int DEFAULT_EDITOR_TEXT_COLOR = new JTextArea().getForeground().getRGB();
+    private static final int DEFAULT_EDITOR_GUTTER_COLOR = new JScrollPane().getBackground().getRGB();
+    private static final int DEFAULT_EDITOR_CURRENT_LINE_HIGHLIGHT_COLOR = new JScrollPane().getBackground().getRGB();
+    private static final int DEFAULT_EDITOR_INSTRUCTION_COLOR = new RSyntaxTextArea().getSyntaxScheme().getStyle(Token.FUNCTION).foreground.getRGB();
+    private static final int DEFAULT_EDITOR_TERMINAL_INSTRUCTION_COLOR = new RSyntaxTextArea().getSyntaxScheme().getStyle(Token.RESERVED_WORD_2).foreground.getRGB();
+    private static final int DEFAULT_EDITOR_OPERATOR_COLOR = new RSyntaxTextArea().getSyntaxScheme().getStyle(Token.OPERATOR).foreground.getRGB();
+    private static final int DEFAULT_EDITOR_DATA_TYPE_COLOR = new RSyntaxTextArea().getSyntaxScheme().getStyle(Token.DATA_TYPE).foreground.getRGB();
+    private static final int DEFAULT_EDITOR_NUMBER_COLOR = new RSyntaxTextArea().getSyntaxScheme().getStyle(Token.LITERAL_NUMBER_DECIMAL_INT).foreground.getRGB();
+    private static final int DEFAULT_EDITOR_COMMENT_COLOR = 0x339933;
+    private static final int DEFAULT_EDITOR_SEPARATOR_COLOR = new RSyntaxTextArea().getSyntaxScheme().getStyle(Token.SEPARATOR).foreground.getRGB();
+    private static final int DEFAULT_EDITOR_QUOTED_COLOR = new RSyntaxTextArea().getSyntaxScheme().getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground.getRGB();
+    private static final int DEFAULT_EDITOR_ERROR_QUOTED_COLOR = new RSyntaxTextArea().getSyntaxScheme().getStyle(Token.ERROR_STRING_DOUBLE).foreground.getRGB();
+    private static final int DEFAULT_EDITOR_DECLARATION_COLOR = new RSyntaxTextArea().getSyntaxScheme().getStyle(Token.RESERVED_WORD).foreground.getRGB();
+    private static final int DEFAULT_EDITOR_LABEL_COLOR = new RSyntaxTextArea().getSyntaxScheme().getStyle(Token.PREPROCESSOR).foreground.getRGB();
+    private static final int DEFAULT_EDITOR_SELECTED_TEXT_COLOR = new RSyntaxTextArea().getSelectedTextColor().getRGB();
+    private static final int DEFAULT_EDITOR_SELECTION_COLOR = new RSyntaxTextArea().getSelectionColor().getRGB();
+    private static final int DEFAULT_TERMINAL_BACKGROUND_COLOR = new JTextArea().getBackground().getRGB();
+    private static final int DEFAULT_TERMINAL_TEXT_COLOR = new JTextArea().getForeground().getRGB();
+    private static final int DEFAULT_TERMINAL_SELECTED_TEXT_COLOR = new JTextArea().getSelectedTextColor().getRGB();
+    private static final int DEFAULT_TERMINAL_SELECTION_COLOR = new JTextArea().getSelectionColor().getRGB();
+
+    private static final int DEFAULT_FONT_SIZE = 16;
 
     private Preferences preferences = Preferences.userRoot().node("com/paide");
 
@@ -41,34 +71,34 @@ public class Settings {
     }
 
     public void load(){
-        editorBackgroundColor = preferences.getInt("editorBackground", 0);
-        editorTextColor = preferences.getInt("editorTextColor", 0);
-        editorGutterColor = preferences.getInt("editorGutterColor", 0);
-        editorInstructionColor = preferences.getInt("editorInstructionColor", 0);
-        editorTerminalInstructionColor = preferences.getInt("editorTerminalInstructionColor", 0);
-        editorDeclarationColor = preferences.getInt("editorDeclarationColor", 0);
-        editorOperatorColor = preferences.getInt("editorOperatorColor", 0);
-        editorDataTypeColor = preferences.getInt("editorDataTypeColor", 0);
-        editorNumberColor = preferences.getInt("editorNumberColor", 0);
-        editorCommentColor = preferences.getInt("editorCommentColor", 0);
-        editorSeparatorColor = preferences.getInt("editorSeparatorColor", 0);
-        editorLabelColor = preferences.getInt("editorLabelColor", 0);
-        editorQuotedColor = preferences.getInt("editorQuotedColor", 0);
-        editorErrorQuotedColor = preferences.getInt("editorErrorQuotedColor", 0);
-        editorCurrentLineHighlightColor = preferences.getInt("editorCurrentLineHighlightColor", 0);
-        editorSelectionColor = preferences.getInt("editorSelectionColor", 0);
-        editorSelectedTextColor = preferences.getInt("editorSelectedTextColor", 0);
-        terminalBackgroundColor = preferences.getInt("terminalBackground", 0);
-        terminalTextColor = preferences.getInt("terminalTextColor", 0);
-        terminalSelectionColor = preferences.getInt("terminalSelectionColor", 0);
-        terminalSelectedTextColor = preferences.getInt("terminalSelectedTextColor", 0);
-        editorIconRowHeader = preferences.getBoolean("editorIconRowHeader", false);
-        editorLineNumbers = preferences.getBoolean("editorLineNumbers", false);
+        editorBackgroundColor = preferences.getInt("editorBackground", DEFAULT_EDITOR_BACKGROUND_COLOR);
+        editorTextColor = preferences.getInt("editorTextColor", DEFAULT_EDITOR_TEXT_COLOR);
+        editorGutterColor = preferences.getInt("editorGutterColor", DEFAULT_EDITOR_GUTTER_COLOR);
+        editorInstructionColor = preferences.getInt("editorInstructionColor", DEFAULT_EDITOR_INSTRUCTION_COLOR);
+        editorTerminalInstructionColor = preferences.getInt("editorTerminalInstructionColor", DEFAULT_EDITOR_TERMINAL_INSTRUCTION_COLOR);
+        editorDeclarationColor = preferences.getInt("editorDeclarationColor", DEFAULT_EDITOR_DECLARATION_COLOR);
+        editorOperatorColor = preferences.getInt("editorOperatorColor", DEFAULT_EDITOR_OPERATOR_COLOR);
+        editorDataTypeColor = preferences.getInt("editorDataTypeColor", DEFAULT_EDITOR_DATA_TYPE_COLOR);
+        editorNumberColor = preferences.getInt("editorNumberColor", DEFAULT_EDITOR_NUMBER_COLOR);
+        editorCommentColor = preferences.getInt("editorCommentColor", DEFAULT_EDITOR_COMMENT_COLOR);
+        editorSeparatorColor = preferences.getInt("editorSeparatorColor", DEFAULT_EDITOR_SEPARATOR_COLOR);
+        editorLabelColor = preferences.getInt("editorLabelColor", DEFAULT_EDITOR_LABEL_COLOR);
+        editorQuotedColor = preferences.getInt("editorQuotedColor", DEFAULT_EDITOR_QUOTED_COLOR);
+        editorErrorQuotedColor = preferences.getInt("editorErrorQuotedColor", DEFAULT_EDITOR_ERROR_QUOTED_COLOR);
+        editorCurrentLineHighlightColor = preferences.getInt("editorCurrentLineHighlightColor", DEFAULT_EDITOR_CURRENT_LINE_HIGHLIGHT_COLOR);
+        editorSelectionColor = preferences.getInt("editorSelectionColor", DEFAULT_EDITOR_SELECTION_COLOR);
+        editorSelectedTextColor = preferences.getInt("editorSelectedTextColor", DEFAULT_EDITOR_SELECTED_TEXT_COLOR);
+        terminalBackgroundColor = preferences.getInt("terminalBackground", DEFAULT_TERMINAL_BACKGROUND_COLOR);
+        terminalTextColor = preferences.getInt("terminalTextColor", DEFAULT_TERMINAL_TEXT_COLOR);
+        terminalSelectionColor = preferences.getInt("terminalSelectionColor", DEFAULT_TERMINAL_SELECTION_COLOR);
+        terminalSelectedTextColor = preferences.getInt("terminalSelectedTextColor", DEFAULT_TERMINAL_SELECTED_TEXT_COLOR);
+        editorIconRowHeader = preferences.getBoolean("editorIconRowHeader", true);
+        editorLineNumbers = preferences.getBoolean("editorLineNumbers", true);
         editorLineWrap = preferences.getBoolean("editorLineWrap", false);
-        editorFontName = preferences.get("editorFontName", "Monospaced");
-        editorFontSize = preferences.getInt("editorFontSize", 16);
-        terminalFontName = preferences.get("terminalFontName", "Monospaced");
-        terminalFontSize = preferences.getInt("terminalFontSize", 16);
+        editorFontName = preferences.get("editorFontName", DEFAULT_MONOSPACED_FONT);
+        editorFontSize = preferences.getInt("editorFontSize", DEFAULT_FONT_SIZE);
+        terminalFontName = preferences.get("terminalFontName", DEFAULT_MONOSPACED_FONT);
+        terminalFontSize = preferences.getInt("terminalFontSize", DEFAULT_FONT_SIZE);
     }
 
     public void save(){

@@ -145,8 +145,8 @@ public class SettingsLayout {
         settings.setEditorQuotedColor(quotedColor.getBackground());
         settings.setEditorErrorQuotedColor(errorQuotedColor.getBackground());
         settings.setEditorCurrentLineHighlightColor(currentLineColor.getBackground());
-        settings.setEditorSelectionColor(terminalSelectionColor.getBackground());
-        settings.setEditorSelectedTextColor(terminalSelectedTextColor.getBackground());
+        settings.setEditorSelectionColor(editorSelectionColor.getBackground());
+        settings.setEditorSelectedTextColor(editorSelectedTextColor.getBackground());
         settings.setTerminalBackgroundColor(terminalBackgroundColor.getBackground());
         settings.setTerminalTextColor(terminalTextColor.getBackground());
         settings.setTerminalSelectionColor(terminalSelectionColor.getBackground());
