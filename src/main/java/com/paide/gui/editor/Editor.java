@@ -10,6 +10,7 @@ import org.fife.ui.rsyntaxtextarea.Token;
 import org.fife.ui.rsyntaxtextarea.TokenMakerFactory;
 import org.fife.ui.rtextarea.RTextScrollPane;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -17,6 +18,8 @@ import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.nio.file.Files;
 
 public class Editor extends RSyntaxTextArea {
@@ -26,7 +29,20 @@ public class Editor extends RSyntaxTextArea {
     private JFileChooser outputChooser;
     private boolean changed = false;
     private RTextScrollPane panel;
-    private static final ImageIcon ERROR_ICON = new ImageIcon("./res/error16x16.png");
+    private static final ImageIcon ERROR_ICON;
+
+    static {
+        InputStream stream = Editor.class.getClassLoader().getResourceAsStream("error16x16.png");
+        Image image = null;
+        try {
+            if(stream != null) image = ImageIO.read(stream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(image != null) ERROR_ICON = new ImageIcon(image);
+            else ERROR_ICON = new ImageIcon();
+        }
+    }
 
     public Editor(RTextScrollPane panel, Settings settings) {
         this(panel);
