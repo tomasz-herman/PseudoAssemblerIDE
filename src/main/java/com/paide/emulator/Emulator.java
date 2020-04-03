@@ -1,4 +1,4 @@
-package com.paide.gui.emulator;
+package com.paide.emulator;
 
 import com.hermant.machine.Machine;
 import com.hermant.program.Program;

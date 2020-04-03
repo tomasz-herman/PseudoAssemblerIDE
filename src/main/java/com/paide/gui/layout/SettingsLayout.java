@@ -602,7 +602,6 @@ public class SettingsLayout {
         return mainPanel;
     }
 
-
     private static class SmallIntegerFilter extends DocumentFilter {
         @Override
         public void insertString(FilterBypass fb, int offset, String string,

@@ -2,7 +2,7 @@ package com.paide.gui.editor;
 
 import com.paide.Main;
 import com.paide.gui.layout.MainLayout;
-import com.paide.gui.emulator.Assembler;
+import com.paide.emulator.Assembler;
 import com.paide.settings.Settings;
 import org.fife.ui.rsyntaxtextarea.AbstractTokenMakerFactory;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
@@ -19,7 +19,6 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.nio.file.Files;
 
 public class Editor extends RSyntaxTextArea {
