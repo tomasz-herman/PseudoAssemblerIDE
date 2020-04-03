@@ -12,4 +12,3 @@ It is highly customizable and intuitive.
 ![PAIDE_03](https://raw.githubusercontent.com/tomasz-herman/PseudoAssemblerIDE/master/gallery/PAIDE_03.png)
 ![PAIDE_04](https://raw.githubusercontent.com/tomasz-herman/PseudoAssemblerIDE/master/gallery/PAIDE_04.png)
 ![PAIDE_05](https://raw.githubusercontent.com/tomasz-herman/PseudoAssemblerIDE/master/gallery/PAIDE_05.png)
-![PAIDE_06](https://raw.githubusercontent.com/tomasz-herman/PseudoAssemblerIDE/master/gallery/PAIDE_06.png)
