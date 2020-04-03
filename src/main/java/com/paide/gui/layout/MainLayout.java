@@ -6,6 +6,7 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.paide.Main;
 import com.paide.gui.MenuBar;
 import com.paide.gui.WindowBuilder;
+import com.paide.gui.editor.AutoComplete;
 import com.paide.gui.editor.Editor;
 import com.paide.emulator.Assembler;
 import com.paide.emulator.Emulator;
@@ -38,6 +39,7 @@ public class MainLayout {
         Settings settings = new Settings();
         terminal = new Terminal(terminalPane, settings);
         editor = new Editor(editorPane, settings);
+        AutoComplete.install(editor);
         menuBar = new MenuBar();
         emulator = new Emulator();
         UIManager.put("ToolTip.font", DEFAULT_FONT);
