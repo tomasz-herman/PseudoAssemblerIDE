@@ -15,6 +15,7 @@ public class AutoComplete {
         addConstantDeclarationCompletions(provider);
         addSpaceDeclarationCompletions(provider);
         addCodeCompletions(provider);
+        addHandyCompletions(provider);
 
         AutoCompletion completion = new AutoCompletion(provider);
         CompletionCellRenderer completionCellRenderer = new CompletionCellRenderer();
@@ -161,9 +162,44 @@ public class AutoComplete {
     private static void addCodeCompletions(AbstractCompletionProvider provider) {
         provider.addCompletion(new ShorthandCompletion(provider, "main",
                 "MAIN:\n\t\t\n\t\tEXIT", "MAIN:\n\t\t\n\t\tEXIT"));
+        provider.addCompletion(new ShorthandCompletion(provider, "bfun",
+                "FUN:\n\t\tENTER\n\t\t\n\t\tLEAVE\n\t\tRET", "function with AR setup"));
         provider.addCompletion(new ShorthandCompletion(provider, "fun",
-                "FUN:\n\t\tENTER\n\t\t\n\t\tLEAVE\n\t\tRET", "FUN:\n\t\tENTER\n\t\t\n\t\tLEAVE\n\t\tRET"));
+                "FUN:\n\t\t\n\t\tRET", "function"));
+    }
+
+    private static void addHandyCompletions(AbstractCompletionProvider provider) {
+        provider.addCompletion(new ShorthandCompletion(provider, "pi", "PI:\t\t DC      FLOAT(3.14159274)\n",
+                "PI Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "e", "E:\t\t  DC      FLOAT(2.71828182)\n",
+                "E Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "zero", "ZERO:\t   DC      INTEGER(0)\n",
+                "Zero Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "one", "ONE:\t\tDC      INTEGER(1)\n",
+                "One Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "four", "FOUR:\t   DC      INTEGER(4)\n",
+                "Four Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "sqrt2", "SQRT2:\t  DC      FLOAT(1.41421356)\n",
+                "sqrt(2) Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "sqrt3", "SQRT3:\t  DC      FLOAT(1.73205081)\n",
+                "sqrt(3) Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "sqrt5", "SQRT5:\t  DC      FLOAT(2.23606798)\n",
+                "sqrt(5) Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "ln2", "LN2:\t\tDC      FLOAT(0.69314718)\n",
+                "ln(2) Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "ln10", "LN10:\t   DC      FLOAT(2.30258509)\n",
+                "ln(2) Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "halfpi", "HALF_PI:\tDC      FLOAT(1.57079632)\n",
+                "half pi Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "twopi", "TWO_PI:\t DC      FLOAT(6.28318531)\n",
+                "two pi Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "fourpi", "FOUR_PI:\tDC      FLOAT(12.5663706)\n",
+                "four pi Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "degtorad", "DEG_TO_RAD: DC      FLOAT(0.01745329252)\n",
+                "deg to rad Macro"));
+        provider.addCompletion(new ShorthandCompletion(provider, "radtodeg", "RAD_TO_DEG: DC      FLOAT(57.29577951)\n",
+                "rad to deg Macro"));
         provider.addCompletion(new ShorthandCompletion(provider, new String(Base64.getDecoder().decode("Y2hhYmFz")),
-                new String(Base64.getDecoder().decode("REMgICAgICAgICAgU1RSSU5HKCJDSEFCQVMgU01JRUMiKQ=="))));
+                new String(Base64.getDecoder().decode("Q0hBQkFTOiAgICAgICAgIERDICAgICAgU1RSSU5HKCJDSEFCQVMgU01JRUMiKQo="))));
     }
 }
