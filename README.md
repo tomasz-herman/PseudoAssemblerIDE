@@ -1,6 +1,6 @@
 # Pseudo-Assembler Integrated Development Environment
 A modern, simple and powerful IDE for Pseudo-Assembler. 
-Allows to write Pseudo-Assembler programs like never before due to the syntax highlighting.
+Allows to write Pseudo-Assembler programs like never before due to the syntax highlighting and autocompletion.
 It is highly customizable and intuitive.
 # Dependencies
 - RSyntaxTextArea version >= 3.0.8
