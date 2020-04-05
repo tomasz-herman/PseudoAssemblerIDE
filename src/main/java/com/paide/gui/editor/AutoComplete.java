@@ -24,6 +24,7 @@ public class AutoComplete {
         completion.setAutoCompleteEnabled(true);
         completionCellRenderer.setDisplayFont(MainLayout.DEFAULT_FONT);
         completion.setShowDescWindow(true);
+        completion.setAutoCompleteSingleChoices(false);
         completion.setListCellRenderer(completionCellRenderer);
         completion.install(editor);
     }
@@ -135,6 +136,7 @@ public class AutoComplete {
         provider.addCompletion(new BasicCompletion(provider, "INTEGER", Main.I18N.getString("integer.short"), Main.I18N.getString("integer.summary")));
         provider.addCompletion(new BasicCompletion(provider, "STRING", Main.I18N.getString("string.short"), Main.I18N.getString("string.summary")));
         provider.addCompletion(new BasicCompletion(provider, "CHAR", Main.I18N.getString("char.short"), Main.I18N.getString("char.summary")));
+        provider.addCompletion(new BasicCompletion(provider, "BYTE", Main.I18N.getString("byte.short"), Main.I18N.getString("byte.summary")));
     }
 
     private static void addConstantDeclarationCompletions(@NotNull AbstractCompletionProvider provider) {
