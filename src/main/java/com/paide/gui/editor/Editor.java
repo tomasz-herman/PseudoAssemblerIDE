@@ -317,6 +317,7 @@ public class Editor extends RSyntaxTextArea {
         file = null;
         changed = false;
         discardAllEdits();
+        grabFocus();
     }
 
     public void open(){
@@ -335,6 +336,7 @@ public class Editor extends RSyntaxTextArea {
             changed = false;
             discardAllEdits();
             setCaretPosition(0);
+            grabFocus();
         }
     }
 
