@@ -16,6 +16,7 @@ import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.lang.reflect.Method;
 import java.util.ResourceBundle;
 
 public class SettingsLayout {
@@ -228,11 +229,11 @@ public class SettingsLayout {
         mainPanel.add(tabbedPane1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(200, 200), null, 0, false));
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), -1, -1));
-        tabbedPane1.addTab(ResourceBundle.getBundle("i18n").getString("font"), panel1);
+        tabbedPane1.addTab(this.$$$getMessageFromBundle$$$("i18n", "font"), panel1);
         final JLabel label1 = new JLabel();
         Font label1Font = this.$$$getFont$$$("Monospaced", Font.BOLD, 24, label1.getFont());
         if (label1Font != null) label1.setFont(label1Font);
-        this.$$$loadLabelText$$$(label1, ResourceBundle.getBundle("i18n").getString("font"));
+        this.$$$loadLabelText$$$(label1, this.$$$getMessageFromBundle$$$("i18n", "font"));
         panel1.add(label1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel2 = new JPanel();
         panel2.setLayout(new GridLayoutManager(5, 3, new Insets(0, 0, 0, 0), -1, -1));
@@ -240,7 +241,7 @@ public class SettingsLayout {
         final JLabel label2 = new JLabel();
         Font label2Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label2.getFont());
         if (label2Font != null) label2.setFont(label2Font);
-        this.$$$loadLabelText$$$(label2, ResourceBundle.getBundle("i18n").getString("editor.font.size"));
+        this.$$$loadLabelText$$$(label2, this.$$$getMessageFromBundle$$$("i18n", "editor.font.size"));
         panel2.add(label2, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final Spacer spacer1 = new Spacer();
         panel2.add(spacer1, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
@@ -252,7 +253,7 @@ public class SettingsLayout {
         final JLabel label3 = new JLabel();
         Font label3Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label3.getFont());
         if (label3Font != null) label3.setFont(label3Font);
-        this.$$$loadLabelText$$$(label3, ResourceBundle.getBundle("i18n").getString("editor.font"));
+        this.$$$loadLabelText$$$(label3, this.$$$getMessageFromBundle$$$("i18n", "editor.font"));
         panel2.add(label3, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         editorFontCombo = new JComboBox();
         Font editorFontComboFont = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, editorFontCombo.getFont());
@@ -261,12 +262,12 @@ public class SettingsLayout {
         final JLabel label4 = new JLabel();
         Font label4Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label4.getFont());
         if (label4Font != null) label4.setFont(label4Font);
-        this.$$$loadLabelText$$$(label4, ResourceBundle.getBundle("i18n").getString("terminal.font"));
+        this.$$$loadLabelText$$$(label4, this.$$$getMessageFromBundle$$$("i18n", "terminal.font"));
         panel2.add(label4, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label5 = new JLabel();
         Font label5Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label5.getFont());
         if (label5Font != null) label5.setFont(label5Font);
-        this.$$$loadLabelText$$$(label5, ResourceBundle.getBundle("i18n").getString("terminal.font.size"));
+        this.$$$loadLabelText$$$(label5, this.$$$getMessageFromBundle$$$("i18n", "terminal.font.size"));
         panel2.add(label5, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         terminalFontCombo = new JComboBox();
         Font terminalFontComboFont = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, terminalFontCombo.getFont());
@@ -286,19 +287,19 @@ public class SettingsLayout {
         final Spacer spacer5 = new Spacer();
         panel2.add(spacer5, new GridConstraints(3, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         final JScrollPane scrollPane1 = new JScrollPane();
-        tabbedPane1.addTab(ResourceBundle.getBundle("i18n").getString("colors"), scrollPane1);
+        tabbedPane1.addTab(this.$$$getMessageFromBundle$$$("i18n", "colors"), scrollPane1);
         final JPanel panel3 = new JPanel();
         panel3.setLayout(new GridLayoutManager(24, 3, new Insets(0, 0, 0, 0), -1, -1));
         scrollPane1.setViewportView(panel3);
         final JLabel label6 = new JLabel();
         Font label6Font = this.$$$getFont$$$("Monospaced", Font.BOLD, 24, label6.getFont());
         if (label6Font != null) label6.setFont(label6Font);
-        this.$$$loadLabelText$$$(label6, ResourceBundle.getBundle("i18n").getString("colors"));
+        this.$$$loadLabelText$$$(label6, this.$$$getMessageFromBundle$$$("i18n", "colors"));
         panel3.add(label6, new GridConstraints(0, 0, 1, 2, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label7 = new JLabel();
         Font label7Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label7.getFont());
         if (label7Font != null) label7.setFont(label7Font);
-        this.$$$loadLabelText$$$(label7, ResourceBundle.getBundle("i18n").getString("background"));
+        this.$$$loadLabelText$$$(label7, this.$$$getMessageFromBundle$$$("i18n", "background"));
         panel3.add(label7, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         editorBackgroundColor = new JPanel();
         editorBackgroundColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -306,7 +307,7 @@ public class SettingsLayout {
         final JLabel label8 = new JLabel();
         Font label8Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label8.getFont());
         if (label8Font != null) label8.setFont(label8Font);
-        this.$$$loadLabelText$$$(label8, ResourceBundle.getBundle("i18n").getString("gutter"));
+        this.$$$loadLabelText$$$(label8, this.$$$getMessageFromBundle$$$("i18n", "gutter"));
         panel3.add(label8, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         gutterColor = new JPanel();
         gutterColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -314,7 +315,7 @@ public class SettingsLayout {
         final JLabel label9 = new JLabel();
         Font label9Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label9.getFont());
         if (label9Font != null) label9.setFont(label9Font);
-        this.$$$loadLabelText$$$(label9, ResourceBundle.getBundle("i18n").getString("text"));
+        this.$$$loadLabelText$$$(label9, this.$$$getMessageFromBundle$$$("i18n", "text"));
         panel3.add(label9, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final Spacer spacer6 = new Spacer();
         panel3.add(spacer6, new GridConstraints(2, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
@@ -324,7 +325,7 @@ public class SettingsLayout {
         final JLabel label10 = new JLabel();
         Font label10Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label10.getFont());
         if (label10Font != null) label10.setFont(label10Font);
-        this.$$$loadLabelText$$$(label10, ResourceBundle.getBundle("i18n").getString("function"));
+        this.$$$loadLabelText$$$(label10, this.$$$getMessageFromBundle$$$("i18n", "function"));
         panel3.add(label10, new GridConstraints(5, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         functionColor = new JPanel();
         functionColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -332,7 +333,7 @@ public class SettingsLayout {
         final JLabel label11 = new JLabel();
         Font label11Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label11.getFont());
         if (label11Font != null) label11.setFont(label11Font);
-        this.$$$loadLabelText$$$(label11, ResourceBundle.getBundle("i18n").getString("function.2"));
+        this.$$$loadLabelText$$$(label11, this.$$$getMessageFromBundle$$$("i18n", "function.2"));
         panel3.add(label11, new GridConstraints(6, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         function2Color = new JPanel();
         function2Color.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -340,7 +341,7 @@ public class SettingsLayout {
         final JLabel label12 = new JLabel();
         Font label12Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label12.getFont());
         if (label12Font != null) label12.setFont(label12Font);
-        this.$$$loadLabelText$$$(label12, ResourceBundle.getBundle("i18n").getString("declaration"));
+        this.$$$loadLabelText$$$(label12, this.$$$getMessageFromBundle$$$("i18n", "declaration"));
         panel3.add(label12, new GridConstraints(7, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         declarationColor = new JPanel();
         declarationColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -348,7 +349,7 @@ public class SettingsLayout {
         final JLabel label13 = new JLabel();
         Font label13Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label13.getFont());
         if (label13Font != null) label13.setFont(label13Font);
-        this.$$$loadLabelText$$$(label13, ResourceBundle.getBundle("i18n").getString("operator"));
+        this.$$$loadLabelText$$$(label13, this.$$$getMessageFromBundle$$$("i18n", "operator"));
         panel3.add(label13, new GridConstraints(8, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         operatorColor = new JPanel();
         operatorColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -356,7 +357,7 @@ public class SettingsLayout {
         final JLabel label14 = new JLabel();
         Font label14Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label14.getFont());
         if (label14Font != null) label14.setFont(label14Font);
-        this.$$$loadLabelText$$$(label14, ResourceBundle.getBundle("i18n").getString("data.type"));
+        this.$$$loadLabelText$$$(label14, this.$$$getMessageFromBundle$$$("i18n", "data.type"));
         panel3.add(label14, new GridConstraints(9, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         dataTypeColor = new JPanel();
         dataTypeColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -364,7 +365,7 @@ public class SettingsLayout {
         final JLabel label15 = new JLabel();
         Font label15Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label15.getFont());
         if (label15Font != null) label15.setFont(label15Font);
-        this.$$$loadLabelText$$$(label15, ResourceBundle.getBundle("i18n").getString("number"));
+        this.$$$loadLabelText$$$(label15, this.$$$getMessageFromBundle$$$("i18n", "number"));
         panel3.add(label15, new GridConstraints(10, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         numberColor = new JPanel();
         numberColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -372,7 +373,7 @@ public class SettingsLayout {
         final JLabel label16 = new JLabel();
         Font label16Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label16.getFont());
         if (label16Font != null) label16.setFont(label16Font);
-        this.$$$loadLabelText$$$(label16, ResourceBundle.getBundle("i18n").getString("comment"));
+        this.$$$loadLabelText$$$(label16, this.$$$getMessageFromBundle$$$("i18n", "comment"));
         panel3.add(label16, new GridConstraints(11, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         commentColor = new JPanel();
         commentColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -380,7 +381,7 @@ public class SettingsLayout {
         final JLabel label17 = new JLabel();
         Font label17Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label17.getFont());
         if (label17Font != null) label17.setFont(label17Font);
-        this.$$$loadLabelText$$$(label17, ResourceBundle.getBundle("i18n").getString("label"));
+        this.$$$loadLabelText$$$(label17, this.$$$getMessageFromBundle$$$("i18n", "label"));
         panel3.add(label17, new GridConstraints(12, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         labelColor = new JPanel();
         labelColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -388,7 +389,7 @@ public class SettingsLayout {
         final JLabel label18 = new JLabel();
         Font label18Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label18.getFont());
         if (label18Font != null) label18.setFont(label18Font);
-        this.$$$loadLabelText$$$(label18, ResourceBundle.getBundle("i18n").getString("brackets"));
+        this.$$$loadLabelText$$$(label18, this.$$$getMessageFromBundle$$$("i18n", "brackets"));
         panel3.add(label18, new GridConstraints(13, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         bracketsColor = new JPanel();
         bracketsColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -396,7 +397,7 @@ public class SettingsLayout {
         final JLabel label19 = new JLabel();
         Font label19Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label19.getFont());
         if (label19Font != null) label19.setFont(label19Font);
-        this.$$$loadLabelText$$$(label19, ResourceBundle.getBundle("i18n").getString("quoted"));
+        this.$$$loadLabelText$$$(label19, this.$$$getMessageFromBundle$$$("i18n", "quoted"));
         panel3.add(label19, new GridConstraints(14, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         quotedColor = new JPanel();
         quotedColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -404,7 +405,7 @@ public class SettingsLayout {
         final JLabel label20 = new JLabel();
         Font label20Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label20.getFont());
         if (label20Font != null) label20.setFont(label20Font);
-        this.$$$loadLabelText$$$(label20, ResourceBundle.getBundle("i18n").getString("error.quoted"));
+        this.$$$loadLabelText$$$(label20, this.$$$getMessageFromBundle$$$("i18n", "error.quoted"));
         panel3.add(label20, new GridConstraints(15, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         errorQuotedColor = new JPanel();
         errorQuotedColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -412,7 +413,7 @@ public class SettingsLayout {
         final JLabel label21 = new JLabel();
         Font label21Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label21.getFont());
         if (label21Font != null) label21.setFont(label21Font);
-        this.$$$loadLabelText$$$(label21, ResourceBundle.getBundle("i18n").getString("current.line"));
+        this.$$$loadLabelText$$$(label21, this.$$$getMessageFromBundle$$$("i18n", "current.line"));
         panel3.add(label21, new GridConstraints(16, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         currentLineColor = new JPanel();
         currentLineColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -420,7 +421,7 @@ public class SettingsLayout {
         final JLabel label22 = new JLabel();
         Font label22Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label22.getFont());
         if (label22Font != null) label22.setFont(label22Font);
-        this.$$$loadLabelText$$$(label22, ResourceBundle.getBundle("i18n").getString("selection"));
+        this.$$$loadLabelText$$$(label22, this.$$$getMessageFromBundle$$$("i18n", "selection"));
         panel3.add(label22, new GridConstraints(17, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         editorSelectionColor = new JPanel();
         editorSelectionColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -428,12 +429,12 @@ public class SettingsLayout {
         final JLabel label23 = new JLabel();
         Font label23Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 20, label23.getFont());
         if (label23Font != null) label23.setFont(label23Font);
-        this.$$$loadLabelText$$$(label23, ResourceBundle.getBundle("i18n").getString("terminal.color.scheme"));
+        this.$$$loadLabelText$$$(label23, this.$$$getMessageFromBundle$$$("i18n", "terminal.color.scheme"));
         panel3.add(label23, new GridConstraints(19, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label24 = new JLabel();
         Font label24Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label24.getFont());
         if (label24Font != null) label24.setFont(label24Font);
-        this.$$$loadLabelText$$$(label24, ResourceBundle.getBundle("i18n").getString("selected.text"));
+        this.$$$loadLabelText$$$(label24, this.$$$getMessageFromBundle$$$("i18n", "selected.text"));
         panel3.add(label24, new GridConstraints(18, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         editorSelectedTextColor = new JPanel();
         editorSelectedTextColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -441,7 +442,7 @@ public class SettingsLayout {
         final JLabel label25 = new JLabel();
         Font label25Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label25.getFont());
         if (label25Font != null) label25.setFont(label25Font);
-        this.$$$loadLabelText$$$(label25, ResourceBundle.getBundle("i18n").getString("background"));
+        this.$$$loadLabelText$$$(label25, this.$$$getMessageFromBundle$$$("i18n", "background"));
         panel3.add(label25, new GridConstraints(20, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         terminalBackgroundColor = new JPanel();
         terminalBackgroundColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -449,7 +450,7 @@ public class SettingsLayout {
         final JLabel label26 = new JLabel();
         Font label26Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label26.getFont());
         if (label26Font != null) label26.setFont(label26Font);
-        this.$$$loadLabelText$$$(label26, ResourceBundle.getBundle("i18n").getString("text"));
+        this.$$$loadLabelText$$$(label26, this.$$$getMessageFromBundle$$$("i18n", "text"));
         panel3.add(label26, new GridConstraints(21, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         terminalTextColor = new JPanel();
         terminalTextColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -457,7 +458,7 @@ public class SettingsLayout {
         final JLabel label27 = new JLabel();
         Font label27Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label27.getFont());
         if (label27Font != null) label27.setFont(label27Font);
-        this.$$$loadLabelText$$$(label27, ResourceBundle.getBundle("i18n").getString("selection"));
+        this.$$$loadLabelText$$$(label27, this.$$$getMessageFromBundle$$$("i18n", "selection"));
         panel3.add(label27, new GridConstraints(22, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         terminalSelectionColor = new JPanel();
         terminalSelectionColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -465,7 +466,7 @@ public class SettingsLayout {
         final JLabel label28 = new JLabel();
         Font label28Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 16, label28.getFont());
         if (label28Font != null) label28.setFont(label28Font);
-        this.$$$loadLabelText$$$(label28, ResourceBundle.getBundle("i18n").getString("selected.text"));
+        this.$$$loadLabelText$$$(label28, this.$$$getMessageFromBundle$$$("i18n", "selected.text"));
         panel3.add(label28, new GridConstraints(23, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         terminalSelectedTextColor = new JPanel();
         terminalSelectedTextColor.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -473,32 +474,32 @@ public class SettingsLayout {
         final JLabel label29 = new JLabel();
         Font label29Font = this.$$$getFont$$$("Monospaced", Font.PLAIN, 20, label29.getFont());
         if (label29Font != null) label29.setFont(label29Font);
-        this.$$$loadLabelText$$$(label29, ResourceBundle.getBundle("i18n").getString("editor.color.scheme"));
+        this.$$$loadLabelText$$$(label29, this.$$$getMessageFromBundle$$$("i18n", "editor.color.scheme"));
         panel3.add(label29, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel4 = new JPanel();
         panel4.setLayout(new GridLayoutManager(5, 2, new Insets(0, 0, 0, 0), -1, -1));
-        tabbedPane1.addTab(ResourceBundle.getBundle("i18n").getString("general"), panel4);
+        tabbedPane1.addTab(this.$$$getMessageFromBundle$$$("i18n", "general"), panel4);
         final JLabel label30 = new JLabel();
         Font label30Font = this.$$$getFont$$$("Monospaced", Font.BOLD, 24, label30.getFont());
         if (label30Font != null) label30.setFont(label30Font);
-        this.$$$loadLabelText$$$(label30, ResourceBundle.getBundle("i18n").getString("general"));
+        this.$$$loadLabelText$$$(label30, this.$$$getMessageFromBundle$$$("i18n", "general"));
         panel4.add(label30, new GridConstraints(0, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final Spacer spacer7 = new Spacer();
         panel4.add(spacer7, new GridConstraints(4, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         showLineNumbersCheckBox = new JCheckBox();
         Font showLineNumbersCheckBoxFont = this.$$$getFont$$$("Monospaced", Font.PLAIN, 18, showLineNumbersCheckBox.getFont());
         if (showLineNumbersCheckBoxFont != null) showLineNumbersCheckBox.setFont(showLineNumbersCheckBoxFont);
-        this.$$$loadButtonText$$$(showLineNumbersCheckBox, ResourceBundle.getBundle("i18n").getString("show.line.numbers"));
+        this.$$$loadButtonText$$$(showLineNumbersCheckBox, this.$$$getMessageFromBundle$$$("i18n", "show.line.numbers"));
         panel4.add(showLineNumbersCheckBox, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         showIconRowHeaderCheckBox = new JCheckBox();
         Font showIconRowHeaderCheckBoxFont = this.$$$getFont$$$("Monospaced", Font.PLAIN, 18, showIconRowHeaderCheckBox.getFont());
         if (showIconRowHeaderCheckBoxFont != null) showIconRowHeaderCheckBox.setFont(showIconRowHeaderCheckBoxFont);
-        this.$$$loadButtonText$$$(showIconRowHeaderCheckBox, ResourceBundle.getBundle("i18n").getString("show.icon.row.header"));
+        this.$$$loadButtonText$$$(showIconRowHeaderCheckBox, this.$$$getMessageFromBundle$$$("i18n", "show.icon.row.header"));
         panel4.add(showIconRowHeaderCheckBox, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         wrapLinesCheckBox = new JCheckBox();
         Font wrapLinesCheckBoxFont = this.$$$getFont$$$("Monospaced", Font.PLAIN, 18, wrapLinesCheckBox.getFont());
         if (wrapLinesCheckBoxFont != null) wrapLinesCheckBox.setFont(wrapLinesCheckBoxFont);
-        this.$$$loadButtonText$$$(wrapLinesCheckBox, ResourceBundle.getBundle("i18n").getString("wrap.lines"));
+        this.$$$loadButtonText$$$(wrapLinesCheckBox, this.$$$getMessageFromBundle$$$("i18n", "wrap.lines"));
         panel4.add(wrapLinesCheckBox, new GridConstraints(3, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel5 = new JPanel();
         panel5.setLayout(new GridLayoutManager(1, 4, new Insets(2, 5, 5, 2), -1, -1));
@@ -506,19 +507,19 @@ public class SettingsLayout {
         cancelButton = new JButton();
         Font cancelButtonFont = this.$$$getFont$$$("Monospaced", Font.PLAIN, 18, cancelButton.getFont());
         if (cancelButtonFont != null) cancelButton.setFont(cancelButtonFont);
-        this.$$$loadButtonText$$$(cancelButton, ResourceBundle.getBundle("i18n").getString("cancel"));
+        this.$$$loadButtonText$$$(cancelButton, this.$$$getMessageFromBundle$$$("i18n", "cancel"));
         panel5.add(cancelButton, new GridConstraints(0, 3, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(100, -1), null, 0, false));
         final Spacer spacer8 = new Spacer();
         panel5.add(spacer8, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         applyButton = new JButton();
         Font applyButtonFont = this.$$$getFont$$$("Monospaced", Font.PLAIN, 18, applyButton.getFont());
         if (applyButtonFont != null) applyButton.setFont(applyButtonFont);
-        this.$$$loadButtonText$$$(applyButton, ResourceBundle.getBundle("i18n").getString("apply"));
+        this.$$$loadButtonText$$$(applyButton, this.$$$getMessageFromBundle$$$("i18n", "apply"));
         panel5.add(applyButton, new GridConstraints(0, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(100, -1), null, 0, false));
         okButton = new JButton();
         Font okButtonFont = this.$$$getFont$$$("Monospaced", Font.PLAIN, 18, okButton.getFont());
         if (okButtonFont != null) okButton.setFont(okButtonFont);
-        this.$$$loadButtonText$$$(okButton, ResourceBundle.getBundle("i18n").getString("ok"));
+        this.$$$loadButtonText$$$(okButton, this.$$$getMessageFromBundle$$$("i18n", "ok"));
         panel5.add(okButton, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(100, -1), null, 0, false));
     }
 
@@ -539,6 +540,23 @@ public class SettingsLayout {
             }
         }
         return new Font(resultName, style >= 0 ? style : currentFont.getStyle(), size >= 0 ? size : currentFont.getSize());
+    }
+
+    private static Method $$$cachedGetBundleMethod$$$ = null;
+
+    private String $$$getMessageFromBundle$$$(String path, String key) {
+        ResourceBundle bundle;
+        try {
+            Class<?> thisClass = this.getClass();
+            if ($$$cachedGetBundleMethod$$$ == null) {
+                Class<?> dynamicBundleClass = thisClass.getClassLoader().loadClass("com.intellij.DynamicBundle");
+                $$$cachedGetBundleMethod$$$ = dynamicBundleClass.getMethod("getBundle", String.class, Class.class);
+            }
+            bundle = (ResourceBundle) $$$cachedGetBundleMethod$$$.invoke(null, path, thisClass);
+        } catch (Exception e) {
+            bundle = ResourceBundle.getBundle(path);
+        }
+        return bundle.getString(key);
     }
 
     /**

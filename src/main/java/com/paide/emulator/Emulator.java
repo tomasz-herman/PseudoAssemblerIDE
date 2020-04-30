@@ -27,4 +27,16 @@ public class Emulator {
         machine.loadProgram(program);
     }
 
+    public void printStack(){
+        System.out.println(machine.getStack());
+    }
+
+    public void printGPR(){
+        System.out.println(machine.getRegister());
+    }
+
+    public void printFPR(){
+        System.out.println(machine.getFPR());
+    }
+
 }

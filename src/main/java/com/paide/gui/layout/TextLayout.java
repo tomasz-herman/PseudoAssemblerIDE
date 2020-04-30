@@ -5,9 +5,11 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.paide.Main;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import javax.swing.event.HyperlinkEvent;
 
 import java.awt.*;
+import java.lang.reflect.Method;
 import java.util.ResourceBundle;
 
 import static com.paide.gui.layout.MainLayout.DEFAULT_FONT;
@@ -65,9 +67,9 @@ public class TextLayout {
     private void $$$setupUI$$$() {
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayoutManager(2, 1, new Insets(5, 5, 5, 5), -1, -1));
-        mainPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createRaisedBevelBorder(), null));
+        mainPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createRaisedBevelBorder(), null, TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, null));
         dismissButton = new JButton();
-        this.$$$loadButtonText$$$(dismissButton, ResourceBundle.getBundle("i18n").getString("close"));
+        this.$$$loadButtonText$$$(dismissButton, this.$$$getMessageFromBundle$$$("i18n", "close"));
         mainPanel.add(dismissButton, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textPanel = new JPanel();
         textPanel.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -76,6 +78,23 @@ public class TextLayout {
         textArea.setContentType("text/html");
         textArea.setEnabled(true);
         textPanel.add(textArea, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+    }
+
+    private static Method $$$cachedGetBundleMethod$$$ = null;
+
+    private String $$$getMessageFromBundle$$$(String path, String key) {
+        ResourceBundle bundle;
+        try {
+            Class<?> thisClass = this.getClass();
+            if ($$$cachedGetBundleMethod$$$ == null) {
+                Class<?> dynamicBundleClass = thisClass.getClassLoader().loadClass("com.intellij.DynamicBundle");
+                $$$cachedGetBundleMethod$$$ = dynamicBundleClass.getMethod("getBundle", String.class, Class.class);
+            }
+            bundle = (ResourceBundle) $$$cachedGetBundleMethod$$$.invoke(null, path, thisClass);
+        } catch (Exception e) {
+            bundle = ResourceBundle.getBundle(path);
+        }
+        return bundle.getString(key);
     }
 
     /**
@@ -111,4 +130,5 @@ public class TextLayout {
     public JComponent $$$getRootComponent$$$() {
         return mainPanel;
     }
+
 }

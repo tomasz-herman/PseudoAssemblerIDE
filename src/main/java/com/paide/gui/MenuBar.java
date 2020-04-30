@@ -14,7 +14,7 @@ public class MenuBar extends JMenuBar {
     private static final List<String> FILE_MENU_ITEMS = List.of("new", "open...", "", "save", "save.as...", "", "settings...", "", "close", "exit");
     private static final List<String> EDIT_MENU_ITEMS = List.of("undo", "redo", "", "cut", "copy", "paste", "delete", "", "select.all");
     private static final List<String> BUILD_MENU_ITEMS = List.of("assemble", "assemble.and.load");
-    private static final List<String> RUN_MENU_ITEMS = List.of("run", "debug");
+    private static final List<String> RUN_MENU_ITEMS = List.of("run", "debug", "", "print.stack", "print.gpr", "print.fpr");
     private static final List<String> HELP_MENU_ITEMS = List.of("help...", "", "license...", "", "about...");
 
     private Map<String, JMenuItem> menuItems;

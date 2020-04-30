@@ -114,6 +114,9 @@ public class MainLayout {
         menuBar.getMenuItem("debug").addActionListener(e -> execute(emulator::debug));
         menuBar.getMenuItem("assemble.and.load").addActionListener(e -> execute(emulator::load));
         menuBar.getMenuItem("assemble").addActionListener(e -> Assembler.assemble(editor));
+        menuBar.getMenuItem("print.stack").addActionListener(e -> emulator.printStack());
+        menuBar.getMenuItem("print.gpr").addActionListener(e -> emulator.printGPR());
+        menuBar.getMenuItem("print.fpr").addActionListener(e -> emulator.printFPR());
 
         menuBar.getMenuItem("run").setAccelerator(KeyStroke.getKeyStroke("ctrl F5"));
         menuBar.getMenuItem("debug").setAccelerator(KeyStroke.getKeyStroke("ctrl shift F5"));
