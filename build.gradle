@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'application'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo1.maven.org/maven2')
+    }
+
+    maven {
+        url = uri('https://maven.pkg.github.com/tomasz-herman/PseudoAssemblerEmulator')
+    }
+}
+
+dependencies {
+    implementation 'com.fifesoft:rsyntaxtextarea:3.1.0'
+    implementation 'com.formdev:flatlaf:0.28'
+    implementation 'com.hermant:pseudo-assembler-emulator:3.1.6'
+    implementation 'org.jetbrains:annotations:19.0.0'
+    implementation 'com.fifesoft:autocomplete:3.1.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.0'
+}
+
+group = 'com.paide'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '11'
+
+application {
+    mainClass = 'com.paide.Main'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
