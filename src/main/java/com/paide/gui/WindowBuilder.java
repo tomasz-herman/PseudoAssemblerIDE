@@ -26,6 +26,7 @@ public final class WindowBuilder {
     private Dimension preferredSize = null;
     private Dimension maximumSize = null;
     private Dimension size = null;
+    private Image image = null;
     private String title = "Window";
     private JMenuBar menuBar = null;
     private Container contentPane = null;
@@ -69,6 +70,11 @@ public final class WindowBuilder {
 
     public WindowBuilder setTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public WindowBuilder setImageIcon(Image image) {
+        this.image = image;
         return this;
     }
 
@@ -218,6 +224,7 @@ public final class WindowBuilder {
             opacity = 1.0f;
         }
         JFrame window = new JFrame();
+        window.setIconImage(image);
         window.setType(type);
         window.setOpacity(opacity);
         window.setContentPane(contentPane);
@@ -256,6 +263,7 @@ public final class WindowBuilder {
         }
         if(closeOperation == EXIT_ON_CLOSE) closeOperation = DISPOSE_ON_CLOSE;
         JDialog dialog = owner == null ? new JDialog() : new JDialog(owner, modality);
+        dialog.setIconImage(image);
         dialog.setType(type);
         dialog.setOpacity(opacity);
         dialog.setContentPane(contentPane);
