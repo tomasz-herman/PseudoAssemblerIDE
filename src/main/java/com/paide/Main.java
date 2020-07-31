@@ -16,7 +16,7 @@ public class Main {
     public static final ImageIcon ICON;
 
     static {
-        InputStream stream = Main.class.getClassLoader().getResourceAsStream("paide32.png");
+        InputStream stream = Main.class.getClassLoader().getResourceAsStream("paide64.png");
         Image image = null;
         try {
             if(stream != null) image = ImageIO.read(stream);
