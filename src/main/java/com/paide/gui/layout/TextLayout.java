@@ -3,10 +3,12 @@ package com.paide.gui.layout;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.paide.Main;
+import com.paide.gui.Fonts;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.HyperlinkEvent;
+import javax.swing.text.html.HTMLDocument;
 
 import java.awt.*;
 import java.lang.reflect.Method;
@@ -26,7 +28,7 @@ public class TextLayout {
 
     public TextLayout(String text) {
         textPanel.setLayout(new FlowLayout());
-        textArea.setFont(DEFAULT_FONT);
+        textArea.setFont(Fonts.getSansFont(20));
         textArea.setText(text);
         textArea.setEditable(false);
         textArea.setBackground(new JPanel().getBackground());

@@ -15,7 +15,7 @@
           </grid>
         </constraints>
         <properties>
-          <font name="Monospaced" size="18" style="0"/>
+          <font/>
           <tabPlacement value="1"/>
         </properties>
         <border type="none"/>
@@ -33,7 +33,7 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Monospaced" size="24" style="1"/>
+                  <font size="28" style="1"/>
                   <text resource-bundle="i18n" key="font"/>
                 </properties>
               </component>
@@ -50,7 +50,7 @@
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="editor.font.size"/>
                     </properties>
                   </component>
@@ -67,7 +67,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <horizontalAlignment value="11"/>
                     </properties>
                   </component>
@@ -76,7 +76,7 @@
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="editor.font"/>
                     </properties>
                   </component>
@@ -87,7 +87,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                     </properties>
                   </component>
                   <component id="33c45" class="javax.swing.JLabel">
@@ -95,7 +95,7 @@
                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="terminal.font"/>
                     </properties>
                   </component>
@@ -104,7 +104,7 @@
                       <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="terminal.font.size"/>
                     </properties>
                   </component>
@@ -115,7 +115,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                     </properties>
                   </component>
                   <component id="bbe9f" class="javax.swing.JTextField" binding="terminalFontSize">
@@ -126,7 +126,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <horizontalAlignment value="11"/>
                     </properties>
                   </component>
@@ -172,7 +172,7 @@
                       <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="24" style="1"/>
+                      <font size="28" style="1"/>
                       <text resource-bundle="i18n" key="colors"/>
                     </properties>
                   </component>
@@ -181,7 +181,7 @@
                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="background"/>
                     </properties>
                   </component>
@@ -201,7 +201,7 @@
                       <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="gutter"/>
                     </properties>
                   </component>
@@ -219,7 +219,7 @@
                       <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="text"/>
                     </properties>
                   </component>
@@ -242,7 +242,7 @@
                       <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="function"/>
                     </properties>
                   </component>
@@ -260,7 +260,7 @@
                       <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="function.2"/>
                     </properties>
                   </component>
@@ -278,7 +278,7 @@
                       <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="declaration"/>
                     </properties>
                   </component>
@@ -296,7 +296,7 @@
                       <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="operator"/>
                     </properties>
                   </component>
@@ -314,7 +314,7 @@
                       <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="data.type"/>
                     </properties>
                   </component>
@@ -332,7 +332,7 @@
                       <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="number"/>
                     </properties>
                   </component>
@@ -350,7 +350,7 @@
                       <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="comment"/>
                     </properties>
                   </component>
@@ -368,7 +368,7 @@
                       <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="label"/>
                     </properties>
                   </component>
@@ -386,7 +386,7 @@
                       <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="brackets"/>
                     </properties>
                   </component>
@@ -404,7 +404,7 @@
                       <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="quoted"/>
                     </properties>
                   </component>
@@ -422,7 +422,7 @@
                       <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="error.quoted"/>
                     </properties>
                   </component>
@@ -440,7 +440,7 @@
                       <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="current.line"/>
                     </properties>
                   </component>
@@ -458,7 +458,7 @@
                       <grid row="17" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="selection"/>
                     </properties>
                   </component>
@@ -476,7 +476,7 @@
                       <grid row="19" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="20" style="0"/>
+                      <font size="24"/>
                       <text resource-bundle="i18n" key="terminal.color.scheme"/>
                     </properties>
                   </component>
@@ -485,7 +485,7 @@
                       <grid row="18" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="selected.text"/>
                     </properties>
                   </component>
@@ -503,7 +503,7 @@
                       <grid row="20" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="background"/>
                     </properties>
                   </component>
@@ -521,7 +521,7 @@
                       <grid row="21" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="text"/>
                     </properties>
                   </component>
@@ -539,7 +539,7 @@
                       <grid row="22" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="selection"/>
                     </properties>
                   </component>
@@ -557,7 +557,7 @@
                       <grid row="23" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="16" style="0"/>
+                      <font/>
                       <text resource-bundle="i18n" key="selected.text"/>
                     </properties>
                   </component>
@@ -575,7 +575,7 @@
                       <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Monospaced" size="20" style="0"/>
+                      <font size="24"/>
                       <text resource-bundle="i18n" key="editor.color.scheme"/>
                     </properties>
                   </component>
@@ -596,7 +596,7 @@
                   <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Monospaced" size="24" style="1"/>
+                  <font size="28" style="1"/>
                   <text resource-bundle="i18n" key="general"/>
                 </properties>
               </component>
@@ -610,7 +610,7 @@
                   <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Monospaced" size="18" style="0"/>
+                  <font/>
                   <text resource-bundle="i18n" key="show.line.numbers"/>
                 </properties>
               </component>
@@ -619,7 +619,7 @@
                   <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Monospaced" size="18" style="0"/>
+                  <font/>
                   <text resource-bundle="i18n" key="show.icon.row.header"/>
                 </properties>
               </component>
@@ -628,7 +628,7 @@
                   <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Monospaced" size="18" style="0"/>
+                  <font/>
                   <text resource-bundle="i18n" key="wrap.lines"/>
                 </properties>
               </component>
@@ -651,7 +651,7 @@
               </grid>
             </constraints>
             <properties>
-              <font name="Monospaced" size="18" style="0"/>
+              <font/>
               <text resource-bundle="i18n" key="cancel"/>
             </properties>
           </component>
@@ -667,7 +667,7 @@
               </grid>
             </constraints>
             <properties>
-              <font name="Monospaced" size="18" style="0"/>
+              <font/>
               <text resource-bundle="i18n" key="apply"/>
             </properties>
           </component>
@@ -678,7 +678,7 @@
               </grid>
             </constraints>
             <properties>
-              <font name="Monospaced" size="18" style="0"/>
+              <font/>
               <text resource-bundle="i18n" key="ok"/>
             </properties>
           </component>

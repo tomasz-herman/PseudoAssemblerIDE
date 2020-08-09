@@ -30,6 +30,8 @@ public class Main {
 
     public static void main(String[] args) {
         FlatIntelliJLaf.install();
+        UIManager.getLookAndFeelDefaults()
+                .put("defaultFont", MainLayout.DEFAULT_FONT);
         SwingUtilities.invokeLater(() -> {
             MainLayout mainLayout = new MainLayout();
             JFrame window = new WindowBuilder()

@@ -4,6 +4,7 @@ import com.hermant.program.Program;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.paide.Main;
+import com.paide.gui.Fonts;
 import com.paide.gui.MenuBar;
 import com.paide.gui.WindowBuilder;
 import com.paide.gui.editor.AutoComplete;
@@ -23,7 +24,9 @@ import java.awt.event.WindowEvent;
 import java.util.function.Consumer;
 
 public class MainLayout {
-    public static final Font DEFAULT_FONT = new Font(Font.MONOSPACED, Font.PLAIN, 18);
+    public static final Font DEFAULT_FONT = Fonts.getSansFont(18);
+    public static final Font DEFAULT_MONO_FONT = Fonts.getMonoFont(18);
+    public static final Font DEFAULT_SERIF_FONT = Fonts.getSerifFont(18);
 
     private JPanel mainPane;
     private JScrollPane terminalPane;
