@@ -52,7 +52,8 @@ runtime {
                     '--win-menu',
                     '--win-shortcut',
                     '--win-menu-group', 'Pseudo-Assembler',
-                    '--name', 'Pseudo-Assembler IDE'
+                    '--name', 'Pseudo-Assembler IDE',
+                    '--win-upgrade-uuid', '49273554-6ec7-47ef-8619-7b1377551575'
             ]
         }
         if (installerType == 'pkg') {
