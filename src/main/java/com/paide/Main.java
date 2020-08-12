@@ -1,8 +1,8 @@
 package com.paide;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.hermant.swing.WindowBuilder;
 import com.paide.gui.layout.MainLayout;
-import com.paide.gui.WindowBuilder;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

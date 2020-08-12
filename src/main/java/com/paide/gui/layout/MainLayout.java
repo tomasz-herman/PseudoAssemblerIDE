@@ -1,12 +1,12 @@
 package com.paide.gui.layout;
 
 import com.hermant.program.Program;
+import com.hermant.swing.WindowBuilder;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.paide.Main;
 import com.paide.gui.Fonts;
 import com.paide.gui.MenuBar;
-import com.paide.gui.WindowBuilder;
 import com.paide.gui.editor.AutoComplete;
 import com.paide.gui.editor.Editor;
 import com.paide.emulator.Assembler;
