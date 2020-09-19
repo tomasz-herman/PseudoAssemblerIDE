@@ -22,6 +22,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
 public class MainLayout {
@@ -154,38 +156,41 @@ public class MainLayout {
                 .buildDialog();
     }
 
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private void execute(Consumer<Program> executor) {
-        Thread thread = new Thread(() -> {
-            running = true;
-            terminal.getTerminalController().clear();
-            terminal.getInputStream().reset();
-            Program program = Assembler.assemble(editor);
-            if (program == null) {
-                running = false;
-                return;
-            }
-            try {
-                executor.accept(program);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            } finally {
-                running = false;
-            }
-        });
-        if (running) {
-            int result = JOptionPane.showConfirmDialog(null, Main.I18N.getString("some.program.is.already.running.do.you.wish.to.stop.it"), Main.I18N.getString("some.program.is.running"), JOptionPane.YES_NO_OPTION);
-            if (result == JOptionPane.YES_OPTION) {
-                while (running) {
-                    Signal.raise(new Signal("INT"));
+        this.executor.execute(() -> {
+            Thread thread = new Thread(() -> {
+                running = true;
+                terminal.getTerminalController().clear();
+                terminal.getInputStream().reset();
+                Program program = Assembler.assemble(editor);
+                if (program == null) {
+                    running = false;
+                    return;
                 }
                 try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    executor.accept(program);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                } finally {
+                    running = false;
                 }
-                thread.start();
-            }
-        } else thread.start();
+            });
+            if (running) {
+                int result = JOptionPane.showConfirmDialog(null, Main.I18N.getString("some.program.is.already.running.do.you.wish.to.stop.it"), Main.I18N.getString("some.program.is.running"), JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                    while (running) {
+                        Signal.raise(new Signal("INT"));
+                    }
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    thread.start();
+                }
+            } else thread.start();
+        });
     }
 
     /**
