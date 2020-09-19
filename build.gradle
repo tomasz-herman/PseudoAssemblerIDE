@@ -12,6 +12,10 @@ repositories {
     }
 
     maven {
+        url = uri('https://jcenter.bintray.com/')
+    }
+
+    maven {
         url = uri('https://maven.pkg.github.com/tomasz-herman/PseudoAssemblerEmulator')
         credentials {
             username = "token"
@@ -26,6 +30,14 @@ repositories {
             password = "\u0033\u0038\u0038\u0063\u0034\u0034\u0062\u0039\u0037\u0034\u0032\u0035\u0065\u0061\u0036\u0065\u0064\u0066\u0031\u0065\u0030\u0033\u0039\u0032\u0066\u0063\u0064\u0031\u0064\u0065\u0031\u0039\u0036\u0039\u0038\u0064\u0064\u0039\u0039\u0061"
         }
     }
+
+    maven {
+        url = uri('https://maven.pkg.github.com/tomasz-herman/JTerminal')
+        credentials {
+            username = "token"
+            password = "\u0033\u0038\u0038\u0063\u0034\u0034\u0062\u0039\u0037\u0034\u0032\u0035\u0065\u0061\u0036\u0065\u0064\u0066\u0031\u0065\u0030\u0033\u0039\u0032\u0066\u0063\u0064\u0031\u0064\u0065\u0031\u0039\u0036\u0039\u0038\u0064\u0064\u0039\u0039\u0061"
+        }
+    }
 }
 
 dependencies {
@@ -35,6 +47,14 @@ dependencies {
     implementation 'org.jetbrains:annotations:19.0.0'
     implementation 'com.fifesoft:autocomplete:3.1.0'
     implementation 'com.hermant:windowbuilder:1.0.2'
+    implementation 'com.hermant:jterminal:0.0.35-alpha'
+
+//    implementation 'org.jetbrains.jediterm:jediterm-pty:2.29'
+//    implementation 'org.jetbrains.pty4j:pty4j:0.8.6'
+//
+//    implementation 'log4j:log4j:1.2.17'
+//    implementation 'com.google.guava:guava:27.1-jre'
+
     testImplementation 'org.junit.jupiter:junit-jupiter:5.6.0'
 }
 

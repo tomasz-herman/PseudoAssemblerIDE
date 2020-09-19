@@ -28,15 +28,15 @@ public class Emulator {
     }
 
     public void printStack(){
-        System.out.println(machine.getStack());
+        new Thread(() -> System.out.println(machine.getStack())).start();
     }
 
     public void printGPR(){
-        System.out.println(machine.getRegister());
+        new Thread(() -> System.out.println(machine.getRegister())).start();
     }
 
     public void printFPR(){
-        System.out.println(machine.getFPR());
+        new Thread(() -> System.out.println(machine.getFPR())).start();
     }
 
 }
