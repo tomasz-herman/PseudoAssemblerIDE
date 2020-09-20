@@ -41,13 +41,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.fifesoft:rsyntaxtextarea:3.1.0'
-    implementation 'com.formdev:flatlaf:0.38'
+    implementation 'com.fifesoft:rsyntaxtextarea:3.1.1'
+    implementation 'com.formdev:flatlaf:0.42'
     implementation 'com.hermant:pseudo-assembler-emulator:3.1.6'
-    implementation 'org.jetbrains:annotations:19.0.0'
+    implementation 'org.jetbrains:annotations:20.1.0'
     implementation 'com.fifesoft:autocomplete:3.1.0'
     implementation 'com.hermant:windowbuilder:1.0.2'
-    implementation 'com.hermant:jterminal:0.0.38-alpha'
+    implementation 'com.hermant:jterminal:0.0.40-alpha'
 
 //    implementation 'org.jetbrains.jediterm:jediterm-pty:2.29'
 //    implementation 'org.jetbrains.pty4j:pty4j:0.8.6'
