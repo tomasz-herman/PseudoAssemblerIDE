@@ -1,3 +1,5 @@
+import org.gradle.internal.os.OperatingSystem
+
 plugins {
     id 'java'
     id 'maven-publish'
@@ -80,11 +82,11 @@ jar {
 runtime {
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
     jpackage {
-        imageName = "Pseudo-Assembler IDE"
-        installerName = "Pseudo-Assembler IDE"
+        imageName = "Pseudo-Assembler-IDE"
+        installerName = "Pseudo-Assembler-IDE"
         installerOptions = []
         installerType = project.findProperty('installerType')
-        if (installerType == 'msi') {
+        if (OperatingSystem.current().isWindows()) {
             imageOptions += ['--icon', 'src/main/resources/paide.ico']
             installerOptions += [
                     '--win-per-user-install',
@@ -96,30 +98,18 @@ runtime {
                     '--win-upgrade-uuid', '49273554-6ec7-47ef-8619-7b1377551575'
             ]
         }
-        if (installerType == 'pkg') {
+        if (OperatingSystem.current().isMacOsX()) {
             imageOptions += ['--icon', 'src/main/resources/paide256.png']
             installerOptions += []
         }
-        if (installerType == 'deb') {
-            imageOptions += ['--icon', 'src/main/resources/paide256.png']
+        if (OperatingSystem.current().isLinux()) {
+            imageOptions += ['--icon', 'src/main/resources/Pseudo-Assembler-IDE.png']
             installerOptions += [
-                    '--linux-menu-group', 'Development',
+                    '--resource-dir', 'src/main/resources',
+                    '--linux-menu-group', 'Development;',
                     '--linux-shortcut'
             ]
         }
-        if (installerType == 'rpm') {
-            imageOptions += ['--icon', 'src/main/resources/paide256.png']
-            installerOptions += [
-                    '--linux-menu-group', 'Development',
-                    '--linux-shortcut'
-            ]
-        }
-    }
-}
-
-jpackage {
-    doFirst {
-        project.getProperty('installerType')
     }
 }
 

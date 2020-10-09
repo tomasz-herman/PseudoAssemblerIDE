@@ -59,11 +59,12 @@ To build the installer you will need:
 After installing prerequisites simply run:
 
 ```
-gradlew jpackage -PinstallerType=msi
+gradlew jpackage
 ```
 
-You can build also different kind of installer depending on your needs, such as:
+You can build all different kinds of installer depending on your operating system, such as:
 
+- exe/msi
 - deb
 - pkg
 - rpm
