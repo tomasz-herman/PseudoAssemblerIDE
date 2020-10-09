@@ -42,7 +42,7 @@ public class MainLayout {
     private volatile boolean running = false;
 
     public MainLayout() {
-        Settings settings = new Settings();
+        Settings settings = Settings.getInstance();
         $$$setupUI$$$();
         terminal = new Terminal(jTerminal, settings);
         editor = new Editor(editorPane, settings);

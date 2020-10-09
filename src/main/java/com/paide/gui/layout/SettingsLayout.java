@@ -16,6 +16,7 @@ import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.lang.reflect.Method;
 import java.util.ResourceBundle;
 
@@ -55,11 +56,13 @@ public class SettingsLayout {
     private JCheckBox showLineNumbersCheckBox;
     private JCheckBox showIconRowHeaderCheckBox;
     private JCheckBox wrapLinesCheckBox;
+    private JTextField workingDirectoryTextField;
+    private JButton browseWorkingDirectoryButton;
 
-    private Settings settings;
+    private final Settings settings;
 
     public SettingsLayout(Editor editor, Terminal terminal) {
-        settings = new Settings();
+        settings = Settings.getInstance();
         initColors();
         initFonts();
         initButtons(editor, terminal);
@@ -72,6 +75,19 @@ public class SettingsLayout {
         showIconRowHeaderCheckBox.setSelected(settings.isEditorIconRowHeader());
         showLineNumbersCheckBox.setSelected(settings.isEditorLineNumbers());
         wrapLinesCheckBox.setSelected(settings.isEditorLineWrap());
+        workingDirectoryTextField.setText(settings.getWorkingDirectory());
+        browseWorkingDirectoryButton.addActionListener(e -> selectWorkingDirectory());
+    }
+
+    private void selectWorkingDirectory() {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        chooser.setAcceptAllFileFilterUsed(false);
+        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            String selected = chooser.getSelectedFile().getAbsolutePath();
+            workingDirectoryTextField.setText(selected);
+        }
     }
 
     public void initColors() {
@@ -162,6 +178,7 @@ public class SettingsLayout {
         settings.setEditorIconRowHeader(showIconRowHeaderCheckBox.isSelected());
         settings.setEditorLineNumbers(showLineNumbersCheckBox.isSelected());
         settings.setEditorLineWrap(wrapLinesCheckBox.isSelected());
+        settings.setWorkingDirectory(workingDirectoryTextField.getText());
     }
 
     private JPanel setupColorChooser(JPanel panel) {
@@ -258,7 +275,7 @@ public class SettingsLayout {
         editorFontCombo = new JComboBox();
         Font editorFontComboFont = this.$$$getFont$$$(null, -1, -1, editorFontCombo.getFont());
         if (editorFontComboFont != null) editorFontCombo.setFont(editorFontComboFont);
-        panel2.add(editorFontCombo, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, new Dimension(240, -1), 0, false));
+        panel2.add(editorFontCombo, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, new Dimension(240, -1), 0, false));
         final JLabel label4 = new JLabel();
         Font label4Font = this.$$$getFont$$$(null, -1, -1, label4.getFont());
         if (label4Font != null) label4.setFont(label4Font);
@@ -272,7 +289,7 @@ public class SettingsLayout {
         terminalFontCombo = new JComboBox();
         Font terminalFontComboFont = this.$$$getFont$$$(null, -1, -1, terminalFontCombo.getFont());
         if (terminalFontComboFont != null) terminalFontCombo.setFont(terminalFontComboFont);
-        panel2.add(terminalFontCombo, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, new Dimension(240, -1), 0, false));
+        panel2.add(terminalFontCombo, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, new Dimension(240, -1), 0, false));
         terminalFontSize = new JTextField();
         Font terminalFontSizeFont = this.$$$getFont$$$(null, -1, -1, terminalFontSize.getFont());
         if (terminalFontSizeFont != null) terminalFontSize.setFont(terminalFontSizeFont);
@@ -477,30 +494,38 @@ public class SettingsLayout {
         this.$$$loadLabelText$$$(label29, this.$$$getMessageFromBundle$$$("i18n", "editor.color.scheme"));
         panel3.add(label29, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel4 = new JPanel();
-        panel4.setLayout(new GridLayoutManager(5, 2, new Insets(0, 0, 0, 0), -1, -1));
+        panel4.setLayout(new GridLayoutManager(6, 3, new Insets(0, 0, 0, 0), -1, -1));
         tabbedPane1.addTab(this.$$$getMessageFromBundle$$$("i18n", "general"), panel4);
         final JLabel label30 = new JLabel();
         Font label30Font = this.$$$getFont$$$(null, Font.BOLD, 28, label30.getFont());
         if (label30Font != null) label30.setFont(label30Font);
         this.$$$loadLabelText$$$(label30, this.$$$getMessageFromBundle$$$("i18n", "general"));
-        panel4.add(label30, new GridConstraints(0, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        panel4.add(label30, new GridConstraints(0, 0, 1, 3, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final Spacer spacer7 = new Spacer();
-        panel4.add(spacer7, new GridConstraints(4, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
+        panel4.add(spacer7, new GridConstraints(5, 0, 1, 3, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         showLineNumbersCheckBox = new JCheckBox();
         Font showLineNumbersCheckBoxFont = this.$$$getFont$$$(null, -1, -1, showLineNumbersCheckBox.getFont());
         if (showLineNumbersCheckBoxFont != null) showLineNumbersCheckBox.setFont(showLineNumbersCheckBoxFont);
         this.$$$loadButtonText$$$(showLineNumbersCheckBox, this.$$$getMessageFromBundle$$$("i18n", "show.line.numbers"));
-        panel4.add(showLineNumbersCheckBox, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        panel4.add(showLineNumbersCheckBox, new GridConstraints(2, 0, 1, 3, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         showIconRowHeaderCheckBox = new JCheckBox();
         Font showIconRowHeaderCheckBoxFont = this.$$$getFont$$$(null, -1, -1, showIconRowHeaderCheckBox.getFont());
         if (showIconRowHeaderCheckBoxFont != null) showIconRowHeaderCheckBox.setFont(showIconRowHeaderCheckBoxFont);
         this.$$$loadButtonText$$$(showIconRowHeaderCheckBox, this.$$$getMessageFromBundle$$$("i18n", "show.icon.row.header"));
-        panel4.add(showIconRowHeaderCheckBox, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        panel4.add(showIconRowHeaderCheckBox, new GridConstraints(3, 0, 1, 3, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         wrapLinesCheckBox = new JCheckBox();
         Font wrapLinesCheckBoxFont = this.$$$getFont$$$(null, -1, -1, wrapLinesCheckBox.getFont());
         if (wrapLinesCheckBoxFont != null) wrapLinesCheckBox.setFont(wrapLinesCheckBoxFont);
         this.$$$loadButtonText$$$(wrapLinesCheckBox, this.$$$getMessageFromBundle$$$("i18n", "wrap.lines"));
-        panel4.add(wrapLinesCheckBox, new GridConstraints(3, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        panel4.add(wrapLinesCheckBox, new GridConstraints(4, 0, 1, 3, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        final JLabel label31 = new JLabel();
+        this.$$$loadLabelText$$$(label31, this.$$$getMessageFromBundle$$$("i18n", "working.directory"));
+        panel4.add(label31, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        workingDirectoryTextField = new JTextField();
+        panel4.add(workingDirectoryTextField, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        browseWorkingDirectoryButton = new JButton();
+        this.$$$loadButtonText$$$(browseWorkingDirectoryButton, this.$$$getMessageFromBundle$$$("i18n", "browse"));
+        panel4.add(browseWorkingDirectoryButton, new GridConstraints(1, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel5 = new JPanel();
         panel5.setLayout(new GridLayoutManager(1, 4, new Insets(2, 5, 5, 2), -1, -1));
         mainPanel.add(panel5, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_SOUTH, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, 1, null, null, null, 0, false));

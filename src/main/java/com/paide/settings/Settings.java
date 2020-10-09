@@ -1,6 +1,5 @@
 package com.paide.settings;
 
-import com.paide.gui.terminal.Terminal;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.Token;
 
@@ -35,7 +34,8 @@ public class Settings {
 
     private static final int DEFAULT_FONT_SIZE = 16;
 
-    private Preferences preferences = Preferences.userRoot().node("com/paide");
+    private final Preferences preferences = Preferences.userRoot().node("com/paide");
+    private static Settings instance;
 
     private int editorBackgroundColor;
     private int editorTextColor;
@@ -65,9 +65,14 @@ public class Settings {
     private int editorFontSize;
     private String terminalFontName;
     private int terminalFontSize;
+    private String workingDirectory;
 
-    public Settings(){
-        load();
+    public static Settings getInstance(){
+        if(instance == null) {
+            instance = new Settings();
+            instance.load();
+        }
+        return instance;
     }
 
     public void load(){
@@ -99,6 +104,7 @@ public class Settings {
         editorFontSize = preferences.getInt("editorFontSize", DEFAULT_FONT_SIZE);
         terminalFontName = preferences.get("terminalFontName", DEFAULT_MONOSPACED_FONT);
         terminalFontSize = preferences.getInt("terminalFontSize", DEFAULT_FONT_SIZE);
+        workingDirectory = preferences.get("workingDirectory", System.getProperty("user.home"));
     }
 
     public void save(){
@@ -130,6 +136,7 @@ public class Settings {
         preferences.putInt("editorFontSize", editorFontSize);
         preferences.put("terminalFontName", terminalFontName);
         preferences.putInt("terminalFontSize", terminalFontSize);
+        preferences.put("workingDirectory", workingDirectory);
     }
 
     public Color getEditorBackgroundColor() {
@@ -382,5 +389,14 @@ public class Settings {
     public int setTerminalFontSize(int terminalFontSize) {
         this.terminalFontSize = terminalFontSize;
         return terminalFontSize;
+    }
+
+    public String getWorkingDirectory() {
+        return workingDirectory;
+    }
+
+    public String setWorkingDirectory(String workingDirectory) {
+        this.workingDirectory = workingDirectory;
+        return workingDirectory;
     }
 }
