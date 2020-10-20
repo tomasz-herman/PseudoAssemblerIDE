@@ -1,6 +1,6 @@
-# Pseudo-Assembler Integrated Development Environment
+<img align="left" width=100 height=100 src="https://github.com/tomasz-herman/PseudoAssemblerIDE/raw/master/src/main/resources/paide256.png" alt="Logo">
 
-<img align="left" src="https://github.com/tomasz-herman/PseudoAssemblerIDE/raw/master/src/main/resources/paide256.png" alt="Logo">
+# Pseudo-Assembler Integrated Development Environment
 
 A modern, simple and powerful IDE for Pseudo-Assembler. 
 Allows to write Pseudo-Assembler programs like never before due to the syntax highlighting and autocompletion.
