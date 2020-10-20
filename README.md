@@ -1,4 +1,7 @@
 # Pseudo-Assembler Integrated Development Environment
+
+<img align="left" src="https://github.com/tomasz-herman/PseudoAssemblerIDE/raw/master/src/main/resources/paide256.png" alt="Logo">
+
 A modern, simple and powerful IDE for Pseudo-Assembler. 
 Allows to write Pseudo-Assembler programs like never before due to the syntax highlighting and autocompletion.
 It is highly customizable and intuitive.
@@ -72,9 +75,13 @@ You can build all different kinds of installer depending on your operating syste
 You can find installer afterwards in `${PROJECT_ROOT}/image/jpackage`.
 
 # Dependencies
-- RSyntaxTextArea version >= 3.0.8
-- FlatLaf version >= 0.24
-- Pseudo-Assembler Emulator version >= 3.1.6
+- [RSyntaxTextArea](https://github.com/bobbylight/RSyntaxTextArea) - a customizable, syntax highlighting text component for Java Swing applications
+- [FlatLaf](https://github.com/JFormDesigner/FlatLaf) - modern open-source cross-platform Look and Feel for Java Swing desktop applications.
+- [AutoComplete](https://github.com/bobbylight/AutoComplete) - code completion library for Swing JTextComponents
+- [JTerminal](https://github.com/tomasz-herman/JTerminal)
+- [Pseudo-Assembler Emulator](https://github.com/tomasz-herman/PseudoAssemblerEmulator)
+- [WindowBuilder](https://github.com/tomasz-herman/WindowBuilder)
+
 # Gallery
 ![PAIDE_01](https://raw.githubusercontent.com/tomasz-herman/PseudoAssemblerIDE/master/gallery/PAIDE_01.png)
 ![PAIDE_02](https://raw.githubusercontent.com/tomasz-herman/PseudoAssemblerIDE/master/gallery/PAIDE_02.png)
