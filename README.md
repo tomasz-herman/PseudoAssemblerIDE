@@ -1,4 +1,4 @@
-<img align="left" width=100 height=100 src="https://github.com/tomasz-herman/PseudoAssemblerIDE/raw/master/src/main/resources/paide256.png" alt="Logo">
+<img align="left" width=160 height=160 src="https://github.com/tomasz-herman/PseudoAssemblerIDE/raw/master/src/main/resources/paide256.png" alt="Logo">
 
 # Pseudo-Assembler Integrated Development Environment
 
