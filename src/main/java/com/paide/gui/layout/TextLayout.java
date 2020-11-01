@@ -8,7 +8,6 @@ import com.paide.gui.Fonts;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.HyperlinkEvent;
-import javax.swing.text.html.HTMLDocument;
 
 import java.awt.*;
 import java.lang.reflect.Method;

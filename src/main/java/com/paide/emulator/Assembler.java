@@ -21,7 +21,11 @@ import java.util.stream.IntStream;
 
 public class Assembler extends AbstractParser {
 
-    private DefaultParseResult result = new DefaultParseResult(this);
+    private static final String ERROR_AT_LINE = "Error at line %d: %s%n";
+    private static final String BUILD_FINISHED_WITH_ERRORS = "Build finished with %d error(s) in %d ms.%n";
+    private static final String BUILD_FINISHED_SUCCESSFULLY = "Build finished successfully in %d ms.%n";
+
+    private final DefaultParseResult result = new DefaultParseResult(this);
 
     @Nullable
     public static Program assemble(@NotNull Editor editor){
@@ -30,7 +34,7 @@ public class Assembler extends AbstractParser {
         long start = System.nanoTime();
         editor.clearErrors();
         Program program = null;
-        final var text = editor.getSelectedText() == null ? editor.getText() : editor.getSelectedText();
+        final var text = editor.getText();
         ArrayList<String> lines = text.lines().collect(Collectors.toCollection(ArrayList::new));
         ArrayList<Integer> lineNumbers = IntStream.rangeClosed(1, lines.size()).boxed().collect(Collectors.toCollection(ArrayList::new));
         int exceptions = 0;
@@ -42,7 +46,7 @@ public class Assembler extends AbstractParser {
             } catch (ParseException e) {
                 exception = true;
                 exceptions++;
-                System.out.printf("Error at line %d: %s%n", lineNumbers.get(e.getLineNumber() - 1), e.getErrorMessage());
+                System.out.printf(ERROR_AT_LINE, lineNumbers.get(e.getLineNumber() - 1), e.getErrorMessage());
                 editor.markError(lineNumbers.get(e.getLineNumber() - 1), e.getErrorMessage());
                 lines.remove(e.getLineNumber() - 1);
                 lineNumbers.remove(e.getLineNumber() - 1);
@@ -50,7 +54,7 @@ public class Assembler extends AbstractParser {
         } while(exception);
         long time = (System.nanoTime() - start) / 1000000;
         if(exceptions != 0){
-            System.out.printf("Build finished with %d error(s) in %d ms.%n", exceptions, time);
+            System.out.printf(BUILD_FINISHED_WITH_ERRORS, exceptions, time);
             return null;
         }
         if(editor.getFile() != null)
@@ -59,7 +63,7 @@ public class Assembler extends AbstractParser {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        System.out.printf("Build finished successfully in %d ms.%n", time);
+        System.out.printf(BUILD_FINISHED_SUCCESSFULLY, time);
         return program;
     }
 
